@@ -79,7 +79,7 @@ public enum RegexPattern implements BiCatalog<RegexPattern, Pattern> {
 	/**
 	 * Date (yyyyMMdd format)
 	 */
-	DATE_YYYYMMDD(9, Pattern.compile("^\\d{4}\\d{1,2}\\d{1,2}$")),
+	DATE(9, Pattern.compile("^\\d{4}\\d{1,2}\\d{1,2}$")),
 
 	/**
 	 * Date with hyphen (yyyyMMdd format)
