@@ -61,16 +61,37 @@ public final class FluentRegex {
         private Builder() {
         }
 
+        /**
+         * Sets the regex pattern.
+         *
+         * @param regexPattern The regex pattern
+         * @return The instance of {@link Builder}
+         *
+         * @exception NullPointerException If {@code null} is passed as an argument
+         */
         public Builder pattern(@NonNull RegexPattern regexPattern) {
             this.regexPattern = regexPattern;
             return this;
         }
 
+        /**
+         * Sets the input character sequence.
+         *
+         * @param input The input
+         * @return The instance of {@link Builder}
+         *
+         * @exception NullPointerException If {@code null} is passed as an argument
+         */
         public Builder input(@NonNull CharSequence input) {
             this.input = input;
             return this;
         }
 
+        /**
+         * Returns the new instance of {@link FluentRegex} .
+         *
+         * @return The new instance of {@link FluentRegex}
+         */
         public FluentRegex build() {
 
             final FluentRegex fluentRegex = new FluentRegex();
@@ -135,5 +156,46 @@ public final class FluentRegex {
      */
     public boolean matches() {
         return this.matcher.matches();
+    }
+
+    /**
+     * Replaces the first subsequence of the input sequence that matches the pattern
+     * with the given replacement string.
+     *
+     * <p>
+     * This method first resets this matcher. It then scans the input sequence
+     * looking for a match of the pattern. Characters that are not part of the match
+     * are appended directly to the result string; the match is replaced in the
+     * result by the replacement string. The replacement string may contain
+     * references to captured subsequences as in the {@link #appendReplacement
+     * appendReplacement} method.
+     *
+     * <p>
+     * Note that backslashes ({@code \}) and dollar signs ({@code $}) in the
+     * replacement string may cause the results to be different than if it were
+     * being treated as a literal replacement string. Dollar signs may be treated as
+     * references to captured subsequences as described above, and backslashes are
+     * used to escape literal characters in the replacement string.
+     *
+     * <p>
+     * Given the regular expression {@code dog}, the input
+     * {@code "zzzdogzzzdogzzz"}, and the replacement string {@code "cat"}, an
+     * invocation of this method on a matcher for that expression would yield the
+     * string {@code "zzzcatzzzdogzzz"}.
+     * </p>
+     *
+     * <p>
+     * Invoking this method changes this matcher's state. If the matcher is to be
+     * used in further matching operations then it should first be reset.
+     * </p>
+     *
+     * @param replacement The replacement string
+     * @return The string constructed by replacing the first matching subsequence by
+     *         the replacement string, substituting captured subsequences as needed
+     *
+     * @exception NullPointerException If {@code null} is passed as an argument
+     */
+    public String replaceFirst(@NonNull String replacement) {
+        return this.matcher.replaceFirst(replacement);
     }
 }
