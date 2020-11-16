@@ -55,7 +55,27 @@ public enum RegexPattern implements BiCatalog<RegexPattern, String> {
      * </code>
      * </pre>
      */
-    USER_NAME(3, "^[a-zA-Z0-9_\\-.]{%s,%s}$");
+    USER_NAME(3, "^[a-zA-Z0-9_\\-.]{%s,%s}$"),
+
+    /**
+     * Fixed line phone (Japan)
+     */
+    FIXED_LINE_PHONE_JP(4, "^0\\d\\d{4}\\d{4}$"),
+
+    /**
+     * Fixed line phone with hyphen (Japan)
+     */
+    FIXED_LINE_PHONE_WITH_HYPHEN_JP(5, "^0\\d-\\d{4}-\\d{4}$"),
+
+    /**
+     * Cell phone (Japana)
+     */
+    CELL_PHONE_JP(6, "^(070|080|090)\\d{4}\\d{4}$"),
+
+    /**
+     * Cell phone with hyphen (Japan)
+     */
+    CELL_PHONE_WITH_HYPHEN_JP(7, "^(070|080|090)-\\d{4}-\\d{4}$");
 
     /**
      * The code
