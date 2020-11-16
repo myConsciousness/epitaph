@@ -16,6 +16,7 @@ package org.thinkit.common.regex;
 
 import java.util.regex.Matcher;
 
+import org.thinkit.common.Preconditions;
 import org.thinkit.common.regex.catalog.RegexPattern;
 
 import lombok.NonNull;
@@ -102,8 +103,13 @@ public final class FluentRegex {
          * Returns the new instance of {@link FluentRegex} .
          *
          * @return The new instance of {@link FluentRegex}
+         *
+         * @exception NullPointerException If {@code regexPattern} or {@code input} is
+         *                                 {@code null}
          */
         public FluentRegex build() {
+            Preconditions.requireNonNull(this.regexPattern);
+            Preconditions.requireNonNull(this.input);
 
             final FluentRegex fluentRegex = new FluentRegex();
             fluentRegex.matcher = this.regexPattern.getTag().matcher(this.input);
