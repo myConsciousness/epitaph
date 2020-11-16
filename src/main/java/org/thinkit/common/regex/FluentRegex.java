@@ -104,12 +104,12 @@ public final class FluentRegex {
          *
          * @return The new instance of {@link FluentRegex}
          *
-         * @exception NullPointerException If {@code regexPattern} or {@code input} is
-         *                                 {@code null}
+         * @exception IllegalStateException If {@link #pattern(RegexPattern)} or
+         *                                  {@link #input(CharSequence)} is not called
          */
         public FluentRegex build() {
-            Preconditions.requireNonNull(this.regexPattern);
-            Preconditions.requireNonNull(this.input);
+            Preconditions.requireNonNull(this.regexPattern, new IllegalStateException("The regex pattern is required"));
+            Preconditions.requireNonNull(this.input, new IllegalStateException("The input is required"));
 
             final FluentRegex fluentRegex = new FluentRegex();
             fluentRegex.matcher = this.regexPattern.getTag().matcher(this.input);
