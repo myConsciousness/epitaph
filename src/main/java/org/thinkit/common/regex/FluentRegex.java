@@ -21,6 +21,8 @@ import org.thinkit.common.regex.catalog.RegexPattern;
 import lombok.NonNull;
 
 /**
+ * Provides functions to manipulate regular expressions in a more intuitive way.
+ * <p>
  *
  *
  * @author Kato Shinya
@@ -41,9 +43,18 @@ public final class FluentRegex {
     }
 
     /**
+     * Returns the new instance of {@link Builder} .
+     *
+     * @return The new instance of {@link Builder}
+     */
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    /**
      * The builder class for {@link FluentRegex} .
      */
-    static class Builder {
+    public static class Builder {
 
         /**
          * The regex pattern
@@ -197,5 +208,72 @@ public final class FluentRegex {
      */
     public String replaceFirst(@NonNull String replacement) {
         return this.matcher.replaceFirst(replacement);
+    }
+
+    /**
+     * Replaces every subsequence of the input sequence that matches the pattern
+     * with the given replacement string.
+     *
+     * <p>
+     * This method first resets this matcher. It then scans the input sequence
+     * looking for matches of the pattern. Characters that are not part of any match
+     * are appended directly to the result string; each match is replaced in the
+     * result by the replacement string. The replacement string may contain
+     * references to captured subsequences as in the {@link #appendReplacement
+     * appendReplacement} method.
+     *
+     * <p>
+     * Note that backslashes ({@code \}) and dollar signs ({@code $}) in the
+     * replacement string may cause the results to be different than if it were
+     * being treated as a literal replacement string. Dollar signs may be treated as
+     * references to captured subsequences as described above, and backslashes are
+     * used to escape literal characters in the replacement string.
+     *
+     * <p>
+     * Given the regular expression {@code a*b}, the input
+     * {@code "aabfooaabfooabfoob"}, and the replacement string {@code "-"}, an
+     * invocation of this method on a matcher for that expression would yield the
+     * string {@code "-foo-foo-foo-"}.
+     *
+     * <p>
+     * Invoking this method changes this matcher's state. If the matcher is to be
+     * used in further matching operations then it should first be reset.
+     * </p>
+     *
+     * @param replacement The replacement string
+     *
+     * @return The string constructed by replacing each matching subsequence by the
+     *         replacement string, substituting captured subsequences as needed
+     *
+     * @exception NullPointerException If {@code null} is passed as an argument
+     */
+    public String replaceAll(@NonNull String replacement) {
+        return this.matcher.replaceAll(replacement);
+    }
+
+    /**
+     * Returns the input subsequence matched by the previous match.
+     *
+     * <p>
+     * For a matcher <i>m</i> with input sequence <i>s</i>, the expressions
+     * <i>m.</i>{@code group()} and
+     * <i>s.</i>{@code substring(}<i>m.</i>{@code start(),}&nbsp;<i>m.</i>
+     * {@code end())} are equivalent.
+     * </p>
+     *
+     * <p>
+     * Note that some patterns, for example {@code a*}, match the empty string. This
+     * method will return the empty string when the pattern successfully matches the
+     * empty string in the input.
+     * </p>
+     *
+     * @return The (possibly empty) subsequence matched by the previous match, in
+     *         string form
+     *
+     * @throws IllegalStateException If no match has yet been attempted, or if the
+     *                               previous match operation failed
+     */
+    public String group() {
+        return this.matcher.group();
     }
 }
