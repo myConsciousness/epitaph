@@ -1,6 +1,7 @@
 ![Build](https://img.shields.io/badge/Build-Automated-2980b9.svg?style=for-the-badge)
 ![Latest Version](https://img.shields.io/badge/Latest_Version-v1.0.0-27ae60.svg?style=for-the-badge)
-![License](https://img.shields.io/badge/License-Apache_2.0-e74c3c.svg?style=for-the-badge)
+![License](https://img.shields.io/badge/License-Apache_2.0-e74c3c.svg?style=for-the-badge)</br>
+![Java CI with Gradle](https://github.com/myConsciousness/fluent-regex/workflows/Java%20CI%20with%20Gradle/badge.svg)
 
 
 # Fluent Regex
