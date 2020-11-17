@@ -83,12 +83,12 @@ loadScripts(document, 'script');</script>
 <section class="description">
 <dl class="notes">
 <dt>All Implemented Interfaces:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/io/Serializable.html" title="class or interface in java.io" class="external-link">Serializable</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Comparable.html" title="class or interface in java.lang" class="external-link">Comparable</a>&lt;<a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a>&gt;</code>, <code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/constant/Constable.html" title="class or interface in java.lang.constant" class="external-link">Constable</a></code>, <code>org.thinkit.api.catalog.BiCatalog&lt;<a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/regex/Pattern.html" title="class or interface in java.util.regex" class="external-link">Pattern</a>&gt;</code></dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/io/Serializable.html" title="class or interface in java.io" class="external-link">Serializable</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Comparable.html" title="class or interface in java.lang" class="external-link">Comparable</a>&lt;<a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a>&gt;</code>, <code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/constant/Constable.html" title="class or interface in java.lang.constant" class="external-link">Constable</a></code>, <code>org.thinkit.api.catalog.BiCatalog&lt;<a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></dd>
 </dl>
 <hr>
 <pre>public enum <span class="type-name-label">RegexPattern</span>
 extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a>&gt;
-implements org.thinkit.api.catalog.BiCatalog&lt;<a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/regex/Pattern.html" title="class or interface in java.util.regex" class="external-link">Pattern</a>&gt;</pre>
+implements org.thinkit.api.catalog.BiCatalog&lt;<a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</pre>
 <div class="block">The catalog that manages regex patterns.</div>
 <dl class="notes">
 <dt>Since:</dt>
@@ -157,21 +157,21 @@ implements org.thinkit.api.catalog.BiCatalog&lt;<a href="RegexPattern.html" titl
 </td>
 </tr>
 <tr class="alt-color">
+<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#DATE">DATE</a></span></code></th>
+<td class="col-last">
+<div class="block">Date (yyyyMMdd format)</div>
+</td>
+</tr>
+<tr class="row-color">
 <th class="col-first" scope="row"><code><span class="member-name-link"><a href="#DATE_WITH_HYPHEN">DATE_WITH_HYPHEN</a></span></code></th>
 <td class="col-last">
 <div class="block">Date with hyphen (yyyyMMdd format)</div>
 </td>
 </tr>
-<tr class="row-color">
+<tr class="alt-color">
 <th class="col-first" scope="row"><code><span class="member-name-link"><a href="#DATE_WITH_SLASH">DATE_WITH_SLASH</a></span></code></th>
 <td class="col-last">
 <div class="block">Date with slash (yyyyMMdd format)</div>
-</td>
-</tr>
-<tr class="alt-color">
-<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#DATE_YYYYMMDD">DATE_YYYYMMDD</a></span></code></th>
-<td class="col-last">
-<div class="block">Date (yyyyMMdd format)</div>
 </td>
 </tr>
 <tr class="row-color">
@@ -275,7 +275,7 @@ implements org.thinkit.api.catalog.BiCatalog&lt;<a href="RegexPattern.html" titl
 </td>
 </tr>
 <tr class="row-color" id="i1">
-<td class="col-first"><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/regex/Pattern.html" title="class or interface in java.util.regex" class="external-link">Pattern</a></code></td>
+<td class="col-first"><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getTag()">getTag</a></span>()</code></th>
 <td class="col-last">
 <div class="block">The tag</div>
@@ -384,9 +384,9 @@ the order they are declared.</div>
 </section>
 </li>
 <li>
-<section class="detail" id="DATE_YYYYMMDD">
-<h3>DATE_YYYYMMDD</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a></span>&nbsp;<span class="member-name">DATE_YYYYMMDD</span></div>
+<section class="detail" id="DATE">
+<h3>DATE</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a></span>&nbsp;<span class="member-name">DATE</span></div>
 <div class="block">Date (yyyyMMdd format)</div>
 </section>
 </li>
@@ -513,18 +513,18 @@ not permitted.)</div>
 <div class="block">The code</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code>getCode</code>&nbsp;in interface&nbsp;<code>org.thinkit.api.catalog.BiCatalog&lt;<a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/regex/Pattern.html" title="class or interface in java.util.regex" class="external-link">Pattern</a>&gt;</code></dd>
+<dd><code>getCode</code>&nbsp;in interface&nbsp;<code>org.thinkit.api.catalog.BiCatalog&lt;<a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></dd>
 </dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getTag()">
 <h3>getTag</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/regex/Pattern.html" title="class or interface in java.util.regex" class="external-link">Pattern</a></span>&nbsp;<span class="member-name">getTag</span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="member-name">getTag</span>()</div>
 <div class="block">The tag</div>
 <dl class="notes">
 <dt>Specified by:</dt>
-<dd><code>getTag</code>&nbsp;in interface&nbsp;<code>org.thinkit.api.catalog.BiCatalog&lt;<a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/regex/Pattern.html" title="class or interface in java.util.regex" class="external-link">Pattern</a>&gt;</code></dd>
+<dd><code>getTag</code>&nbsp;in interface&nbsp;<code>org.thinkit.api.catalog.BiCatalog&lt;<a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></dd>
 </dl>
 </section>
 </li>

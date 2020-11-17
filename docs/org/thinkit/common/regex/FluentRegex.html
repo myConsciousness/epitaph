@@ -15,8 +15,8 @@
 <script type="text/javascript" src="../../../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="class-declaration-page">
-<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+<script type="text/javascript">var data = {"i0":9,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
+var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "alt-color";
 var rowColor = "row-color";
 var tableTab = "table-tab";
@@ -46,7 +46,7 @@ loadScripts(document, 'script');</script>
 <div>
 <ul class="sub-nav-list">
 <li>Summary:&nbsp;</li>
-<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
@@ -82,6 +82,10 @@ loadScripts(document, 'script');</script>
 <hr>
 <pre>public final class <span class="type-name-label">FluentRegex</span>
 extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></pre>
+<div class="block">Provides functions to manipulate regular expressions in a more intuitive way.
+ <p>
+ If you want to add a regular expression pattern to be used, please maintain
+ <a href="catalog/RegexPattern.html" title="enum in org.thinkit.common.regex.catalog"><code>RegexPattern</code></a> .</div>
 <dl class="notes">
 <dt>Since:</dt>
 <dd>1.0</dd>
@@ -89,12 +93,39 @@ extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/ja
 </section>
 <section class="summary">
 <ul class="summary-list">
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<li>
+<section class="nested-class-summary" id="nested.class.summary">
+<h2>Nested Class Summary</h2>
+<div class="member-summary">
+<table class="summary-table">
+<caption><span>Nested Classes</span></caption>
+<thead>
+<tr>
+<th class="col-first" scope="col">Modifier and Type</th>
+<th class="col-second" scope="col">Class</th>
+<th class="col-last" scope="col">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="alt-color">
+<td class="col-first"><code>static class&nbsp;</code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="FluentRegex.Builder.html" title="class in org.thinkit.common.regex">FluentRegex.Builder</a></span></code></th>
+<td class="col-last">
+<div class="block">The builder class for <a href="FluentRegex.html" title="class in org.thinkit.common.regex"><code>FluentRegex</code></a> .</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</li>
 <!-- ========== METHOD SUMMARY =========== -->
 <li>
 <section class="method-summary" id="method.summary">
 <h2>Method Summary</h2>
 <div class="member-summary" id="method-summary-table">
-<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="active-table-tab">All Methods</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t2" class="table-tab" onclick="show(2);">Instance Methods</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t4" class="table-tab" onclick="show(8);">Concrete Methods</button></div>
+<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="active-table-tab">All Methods</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t1" class="table-tab" onclick="show(1);">Static Methods</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t2" class="table-tab" onclick="show(2);">Instance Methods</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t4" class="table-tab" onclick="show(8);">Concrete Methods</button></div>
 <div id="method-summary-table.tabpanel" role="tabpanel">
 <table class="summary-table" aria-labelledby="t0">
 <thead>
@@ -106,6 +137,13 @@ extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/ja
 </thead>
 <tbody>
 <tr class="alt-color" id="i0">
+<td class="col-first"><code>static <a href="FluentRegex.Builder.html" title="class in org.thinkit.common.regex">FluentRegex.Builder</a></code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#builder()">builder</a></span>()</code></th>
+<td class="col-last">
+<div class="block">Returns the new instance of <a href="FluentRegex.Builder.html" title="class in org.thinkit.common.regex"><code>FluentRegex.Builder</code></a> .</div>
+</td>
+</tr>
+<tr class="row-color" id="i1">
 <td class="col-first"><code>boolean</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#find()">find</a></span>()</code></th>
 <td class="col-last">
@@ -113,7 +151,14 @@ extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/ja
  pattern.</div>
 </td>
 </tr>
-<tr class="row-color" id="i1">
+<tr class="alt-color" id="i2">
+<td class="col-first"><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#group()">group</a></span>()</code></th>
+<td class="col-last">
+<div class="block">Returns the input subsequence matched by the previous match.</div>
+</td>
+</tr>
+<tr class="row-color" id="i3">
 <td class="col-first"><code>boolean</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#lookingAt()">lookingAt</a></span>()</code></th>
 <td class="col-last">
@@ -121,11 +166,27 @@ extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/ja
  region, against the pattern.</div>
 </td>
 </tr>
-<tr class="alt-color" id="i2">
+<tr class="alt-color" id="i4">
 <td class="col-first"><code>boolean</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#matches()">matches</a></span>()</code></th>
 <td class="col-last">
 <div class="block">Attempts to match the entire region against the pattern.</div>
+</td>
+</tr>
+<tr class="row-color" id="i5">
+<td class="col-first"><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#replaceAll(java.lang.String)">replaceAll</a></span>&#8203;(@NonNull <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;replacement)</code></th>
+<td class="col-last">
+<div class="block">Replaces every subsequence of the input sequence that matches the pattern
+ with the given replacement string.</div>
+</td>
+</tr>
+<tr class="alt-color" id="i6">
+<td class="col-first"><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#replaceFirst(java.lang.String)">replaceFirst</a></span>&#8203;(@NonNull <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;replacement)</code></th>
+<td class="col-last">
+<div class="block">Replaces the first subsequence of the input sequence that matches the pattern
+ with the given replacement string.</div>
 </td>
 </tr>
 </tbody>
@@ -146,6 +207,17 @@ extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/ja
 <section class="method-details" id="method.detail">
 <h2>Method Details</h2>
 <ul class="member-list">
+<li>
+<section class="detail" id="builder()">
+<h3>builder</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="FluentRegex.Builder.html" title="class in org.thinkit.common.regex">FluentRegex.Builder</a></span>&nbsp;<span class="member-name">builder</span>()</div>
+<div class="block">Returns the new instance of <a href="FluentRegex.Builder.html" title="class in org.thinkit.common.regex"><code>FluentRegex.Builder</code></a> .</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>The new instance of <a href="FluentRegex.Builder.html" title="class in org.thinkit.common.regex"><code>FluentRegex.Builder</code></a></dd>
+</dl>
+</section>
+</li>
 <li>
 <section class="detail" id="find()">
 <h3>find</h3>
@@ -209,6 +281,123 @@ extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/ja
 </dl>
 </section>
 </li>
+<li>
+<section class="detail" id="replaceFirst(java.lang.String)">
+<h3>replaceFirst</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="member-name">replaceFirst</span>&#8203;(<span class="parameters">@NonNull
+@NonNull <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;replacement)</span></div>
+<div class="block">Replaces the first subsequence of the input sequence that matches the pattern
+ with the given replacement string.
+
+ <p>
+ This method first resets this matcher. It then scans the input sequence
+ looking for a match of the pattern. Characters that are not part of the match
+ are appended directly to the result string; the match is replaced in the
+ result by the replacement string. The replacement string may contain
+ references to captured subsequences as in the
+ <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/regex/Matcher.html#appendReplacement(java.lang.StringBuffer,java.lang.String)" title="class or interface in java.util.regex" class="external-link"><code>Matcher.appendReplacement(java.lang.StringBuffer, java.lang.String)</code></a> method.
+
+ <p>
+ Note that backslashes (<code>\</code>) and dollar signs (<code>$</code>) in the
+ replacement string may cause the results to be different than if it were
+ being treated as a literal replacement string. Dollar signs may be treated as
+ references to captured subsequences as described above, and backslashes are
+ used to escape literal characters in the replacement string.
+
+ <p>
+ Given the regular expression <code>dog</code>, the input
+ <code>"zzzdogzzzdogzzz"</code>, and the replacement string <code>"cat"</code>, an
+ invocation of this method on a matcher for that expression would yield the
+ string <code>"zzzcatzzzdogzzz"</code>.
+ </p>
+
+ <p>
+ Invoking this method changes this matcher's state. If the matcher is to be
+ used in further matching operations then it should first be reset.
+ </p></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>replacement</code> - The replacement string</dd>
+<dt>Returns:</dt>
+<dd>The string constructed by replacing the first matching subsequence by
+         the replacement string, substituting captured subsequences as needed</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>null</code> is passed as an argument</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="replaceAll(java.lang.String)">
+<h3>replaceAll</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="member-name">replaceAll</span>&#8203;(<span class="parameters">@NonNull
+@NonNull <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;replacement)</span></div>
+<div class="block">Replaces every subsequence of the input sequence that matches the pattern
+ with the given replacement string.
+
+ <p>
+ This method first resets this matcher. It then scans the input sequence
+ looking for matches of the pattern. Characters that are not part of any match
+ are appended directly to the result string; each match is replaced in the
+ result by the replacement string. The replacement string may contain
+ references to captured subsequences as in the
+ <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/regex/Matcher.html#appendReplacement(java.lang.StringBuffer,java.lang.String)" title="class or interface in java.util.regex" class="external-link"><code>Matcher.appendReplacement(java.lang.StringBuffer, java.lang.String)</code></a> method.
+
+ <p>
+ Note that backslashes (<code>\</code>) and dollar signs (<code>$</code>) in the
+ replacement string may cause the results to be different than if it were
+ being treated as a literal replacement string. Dollar signs may be treated as
+ references to captured subsequences as described above, and backslashes are
+ used to escape literal characters in the replacement string.
+
+ <p>
+ Given the regular expression <code>a*b</code>, the input
+ <code>"aabfooaabfooabfoob"</code>, and the replacement string <code>"-"</code>, an
+ invocation of this method on a matcher for that expression would yield the
+ string <code>"-foo-foo-foo-"</code>.
+
+ <p>
+ Invoking this method changes this matcher's state. If the matcher is to be
+ used in further matching operations then it should first be reset.
+ </p></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>replacement</code> - The replacement string</dd>
+<dt>Returns:</dt>
+<dd>The string constructed by replacing each matching subsequence by the
+         replacement string, substituting captured subsequences as needed</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="class or interface in java.lang" class="external-link">NullPointerException</a></code> - If <code>null</code> is passed as an argument</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="group()">
+<h3>group</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="member-name">group</span>()</div>
+<div class="block">Returns the input subsequence matched by the previous match.
+
+ <p>
+ For a matcher <i>m</i> with input sequence <i>s</i>, the expressions
+ <i>m.</i><code>group()</code> and
+ <i>s.</i><code>substring(</code><i>m.</i><code>start(),</code>&nbsp;<i>m.</i>
+ <code>end())</code> are equivalent.
+ </p>
+
+ <p>
+ Note that some patterns, for example <code>a*</code>, match the empty string. This
+ method will return the empty string when the pattern successfully matches the
+ empty string in the input.
+ </p></div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>The (possibly empty) subsequence matched by the previous match, in
+         string form</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IllegalStateException.html" title="class or interface in java.lang" class="external-link">IllegalStateException</a></code> - If no match has yet been attempted, or if the
+                               previous match operation failed</dd>
+</dl>
+</section>
+</li>
 </ul>
 </section>
 </li>
@@ -235,7 +424,7 @@ extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/ja
 <div>
 <ul class="sub-nav-list">
 <li>Summary:&nbsp;</li>
-<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
 <li>Field&nbsp;|&nbsp;</li>
 <li>Constr&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
