@@ -72,12 +72,9 @@ public final class Option extends ArrayList<RegexOption> {
     }
 
     /**
-     * Constructs an empty list with the specified initial capacity.
+     * Constructs an empty list with an initial capacity of {@code 10} .
      *
-     * @param initialCapacity The initial capacity of the list
-     *
-     * @exception IllegalArgumentException If the specified initial capacity is
-     *                                     negative
+     * @return The new isntance of {@link Option}
      */
     public static Option of() {
         return new Option();
@@ -87,6 +84,7 @@ public final class Option extends ArrayList<RegexOption> {
      * Constructs an empty list with the specified initial capacity.
      *
      * @param initialCapacity The initial capacity of the list
+     * @return The new isntance of {@link Option}
      *
      * @exception IllegalArgumentException If the specified initial capacity is
      *                                     negative
@@ -101,6 +99,7 @@ public final class Option extends ArrayList<RegexOption> {
      *
      * @param collection The collection whose elements are to be placed into this
      *                   list
+     * @return The new isntance of {@link Option}
      *
      * @exception NullPointerException If the specified collection is {@code null}
      */

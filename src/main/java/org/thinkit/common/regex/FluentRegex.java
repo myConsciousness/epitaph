@@ -210,8 +210,8 @@ public final class FluentRegex {
      * looking for a match of the pattern. Characters that are not part of the match
      * are appended directly to the result string; the match is replaced in the
      * result by the replacement string. The replacement string may contain
-     * references to captured subsequences as in the {@link #appendReplacement
-     * appendReplacement} method.
+     * references to captured subsequences as in the
+     * {@link Matcher#appendReplacement} method.
      *
      * <p>
      * Note that backslashes ({@code \}) and dollar signs ({@code $}) in the
@@ -251,8 +251,8 @@ public final class FluentRegex {
      * looking for matches of the pattern. Characters that are not part of any match
      * are appended directly to the result string; each match is replaced in the
      * result by the replacement string. The replacement string may contain
-     * references to captured subsequences as in the {@link #appendReplacement
-     * appendReplacement} method.
+     * references to captured subsequences as in the
+     * {@link Matcher#appendReplacement} method.
      *
      * <p>
      * Note that backslashes ({@code \}) and dollar signs ({@code $}) in the
