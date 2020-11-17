@@ -14,10 +14,13 @@
 
 package org.thinkit.common.regex;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.thinkit.common.regex.catalog.RegexPattern;
@@ -30,6 +33,24 @@ import org.thinkit.common.regex.catalog.RegexPattern;
  * @version 1.0
  */
 final class FluentRegexTest {
+
+    @Nested
+    class TestBuilder {
+
+        @Test
+        void testWhenPatternMethodDoesNotCalled() {
+            final IllegalStateException exception = assertThrows(IllegalStateException.class,
+                    () -> FluentRegex.builder().input("").build());
+            assertEquals("The regex pattern is required", exception.getMessage());
+        }
+
+        @Test
+        void testWhenInputMethodDoesNotCalled() {
+            final IllegalStateException exception = assertThrows(IllegalStateException.class,
+                    () -> FluentRegex.builder().pattern(RegexPattern.ALPHABET).build());
+            assertEquals("The input is required", exception.getMessage());
+        }
+    }
 
     @Nested
     class TestEmailAddressPattern {
@@ -69,7 +90,7 @@ final class FluentRegexTest {
         @ParameterizedTest
         @ValueSource(strings = { " test@gmail.com", "test@something.co.jp ", "testmy.email.jp", "tes t@my.email.jp",
                 "test @my.email.jp", "test@my.ema il.jp", "にほんご@メールアドレス.日本" })
-        void testNotMatches(final String parameter) {
+        void testNotMatch(final String parameter) {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.EMAIL_ADDRESS).input(parameter).build().matches());
         }
     }
