@@ -10,7 +10,22 @@
 <!-- END doctoc -->
 ## What is it?
 
-Fluent Regex main repository.
+**_More reusable and intuitive regular expressions!_**
+
+This package was created to take an obscure and non-intuitive regular expression and make it more reusable and intuitive.
+
+Is there a regular expression that you use a lot but look up on the internet every time? It provides presets for such frequent but unremembered spell-like regular expressions.
+
+## Benefits
+
+- You can use regular expressions intuitively
+- Commonly used regular expressions are provided as presets
+- Feature quality is high due to the wrapping of ` java.lang.regex.Matcher`
+
+> **_Note:_**</br>
+> Of course, for those of you who have mastered regular expressions, this package will be an unnecessary long shot!
+
+
 ## How To Use
 
 ### 1. Add the dependencies
