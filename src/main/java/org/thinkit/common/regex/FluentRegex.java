@@ -15,6 +15,7 @@
 package org.thinkit.common.regex;
 
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.thinkit.common.Preconditions;
 import org.thinkit.common.regex.catalog.RegexPattern;
@@ -112,7 +113,7 @@ public final class FluentRegex {
             Preconditions.requireNonNull(this.input, new IllegalStateException("The input is required"));
 
             final FluentRegex fluentRegex = new FluentRegex();
-            fluentRegex.matcher = this.regexPattern.getTag().matcher(this.input);
+            fluentRegex.matcher = Pattern.compile(this.regexPattern.getTag()).matcher(this.input);
 
             return fluentRegex;
         }
