@@ -35,7 +35,7 @@ import lombok.ToString;
  */
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public final class Option extends ArrayList<RegexOption> {
+public final class RegexOptionGroup extends ArrayList<RegexOption> {
 
     /**
      * Serial Verison UID
@@ -45,7 +45,7 @@ public final class Option extends ArrayList<RegexOption> {
     /**
      * Constructs an empty list with an initial capacity of {@code 10} .
      */
-    private Option() {
+    private RegexOptionGroup() {
         super();
     }
 
@@ -57,7 +57,7 @@ public final class Option extends ArrayList<RegexOption> {
      * @exception IllegalArgumentException If the specified initial capacity is
      *                                     negative
      */
-    private Option(int initialCapacity) {
+    private RegexOptionGroup(int initialCapacity) {
         super(initialCapacity);
     }
 
@@ -70,7 +70,7 @@ public final class Option extends ArrayList<RegexOption> {
      *
      * @exception NullPointerException If the specified collection is {@code null}
      */
-    private Option(@NonNull Collection<? extends RegexOption> collection) {
+    private RegexOptionGroup(@NonNull Collection<? extends RegexOption> collection) {
         super(collection);
     }
 
@@ -79,8 +79,8 @@ public final class Option extends ArrayList<RegexOption> {
      *
      * @return The new isntance of {@link Option}
      */
-    public static Option of() {
-        return new Option();
+    public static RegexOptionGroup of() {
+        return new RegexOptionGroup();
     }
 
     /**
@@ -92,8 +92,8 @@ public final class Option extends ArrayList<RegexOption> {
      * @exception IllegalArgumentException If the specified initial capacity is
      *                                     negative
      */
-    public static Option of(int initialCapacity) {
-        return new Option(initialCapacity);
+    public static RegexOptionGroup of(int initialCapacity) {
+        return new RegexOptionGroup(initialCapacity);
     }
 
     /**
@@ -106,8 +106,8 @@ public final class Option extends ArrayList<RegexOption> {
      *
      * @exception NullPointerException If the specified collection is {@code null}
      */
-    public static Option of(@NonNull Collection<? extends RegexOption> collection) {
-        return new Option(collection);
+    public static RegexOptionGroup of(@NonNull Collection<? extends RegexOption> collection) {
+        return new RegexOptionGroup(collection);
     }
 
     /**

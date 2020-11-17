@@ -70,9 +70,9 @@ public final class FluentRegex {
         private CharSequence input;
 
         /**
-         * The option
+         * The regex option group
          */
-        private Option option = Option.of();
+        private RegexOptionGroup regexOptionGroup = RegexOptionGroup.of();
 
         /**
          * Defalut constructor
@@ -107,15 +107,15 @@ public final class FluentRegex {
         }
 
         /**
-         * Sets the regex option.
+         * Sets the regex option group.
          *
-         * @param option The regex option
+         * @param regexOptionGroup The regex option group
          * @return The instance of {@link Builder}
          *
          * @exception NullPointerException If {@code null} is passed as an argument
          */
-        public Builder option(@NonNull Option option) {
-            this.option = option;
+        public Builder option(@NonNull RegexOptionGroup regexOptionGroup) {
+            this.regexOptionGroup = regexOptionGroup;
             return this;
         }
 
@@ -133,10 +133,11 @@ public final class FluentRegex {
 
             final FluentRegex fluentRegex = new FluentRegex();
 
-            if (this.option.isEmpty()) {
+            if (this.regexOptionGroup.isEmpty()) {
                 fluentRegex.matcher = Pattern.compile(this.regexPattern.getTag()).matcher(this.input);
             } else {
-                fluentRegex.matcher = Pattern.compile(this.regexPattern.getTag(), this.option.getRegexOption())
+                fluentRegex.matcher = Pattern
+                        .compile(this.regexPattern.getTag(), this.regexOptionGroup.getRegexOption())
                         .matcher(this.input);
             }
 
