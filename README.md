@@ -6,6 +6,8 @@
 
 # Fluent Regex
 
+<!-- START doctoc -->
+<!-- END doctoc -->
 ## What is it?
 
 Fluent Regex main repository.
