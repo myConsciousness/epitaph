@@ -25,7 +25,8 @@ import lombok.NonNull;
 /**
  * Provides functions to manipulate regular expressions in a more intuitive way.
  * <p>
- *
+ * If you want to add a regular expression pattern to be used, please maintain
+ * {@link RegexPattern} .
  *
  * @author Kato Shinya
  * @since 1.0
