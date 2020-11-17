@@ -24,7 +24,10 @@ import lombok.NonNull;
 import lombok.ToString;
 
 /**
- * Class for managing {@link RegexOption} .
+ * The class that manages options for parsing regular expressions.
+ * <p>
+ * Additional parsing options can be retrieved by using the
+ * {@link #getRegexOption()} method.
  *
  * @author Kato Shinya
  * @since 1.0
