@@ -1,7 +1,7 @@
 on: 
   push:
     paths:
-      - 'readme.md'
+      - 'README.md'
 
 name: TOC Generator
 
