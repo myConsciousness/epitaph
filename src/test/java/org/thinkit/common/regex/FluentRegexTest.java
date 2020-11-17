@@ -14,6 +14,13 @@
 
 package org.thinkit.common.regex;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.thinkit.common.regex.catalog.RegexPattern;
+
 /**
  * The test class for the {@link FluentRegex} .
  *
@@ -23,4 +30,19 @@ package org.thinkit.common.regex;
  */
 final class FluentRegexTest {
 
+    @Nested
+    class TestEmailAddressPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test@gmail.com", "test@something.co.jp", "test@my.email.jp", "test@my.email.jp" })
+        void testFind(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.EMAIL_ADDRESS).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test@gmail.com", "test@something.co.jp", "test@my.email.jp" })
+        void testLookingAt(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.EMAIL_ADDRESS).input(parameter).build().lookingAt());
+        }
+    }
 }
