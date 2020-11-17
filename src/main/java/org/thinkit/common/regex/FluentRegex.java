@@ -14,10 +14,12 @@
 
 package org.thinkit.common.regex;
 
+import java.util.EnumSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.thinkit.common.Preconditions;
+import org.thinkit.common.regex.catalog.RegexOption;
 import org.thinkit.common.regex.catalog.RegexPattern;
 
 import lombok.NonNull;
@@ -70,9 +72,9 @@ public final class FluentRegex {
         private CharSequence input;
 
         /**
-         * The regex option group
+         * The regex option set
          */
-        private RegexOptionGroup regexOptionGroup = RegexOptionGroup.of();
+        private EnumSet<RegexOption> regexOptionSet = EnumSet.noneOf(RegexOption.class);
 
         /**
          * Defalut constructor
@@ -107,15 +109,15 @@ public final class FluentRegex {
         }
 
         /**
-         * Sets the regex option group.
+         * Sets the regex option set.
          *
-         * @param regexOptionGroup The regex option group
+         * @param regexOptionSet The regex option set
          * @return The instance of {@link Builder}
          *
          * @exception NullPointerException If {@code null} is passed as an argument
          */
-        public Builder option(@NonNull RegexOptionGroup regexOptionGroup) {
-            this.regexOptionGroup = regexOptionGroup;
+        public Builder option(@NonNull EnumSet<RegexOption> regexOptionSet) {
+            this.regexOptionSet = regexOptionSet;
             return this;
         }
 
@@ -133,15 +135,30 @@ public final class FluentRegex {
 
             final FluentRegex fluentRegex = new FluentRegex();
 
-            if (this.regexOptionGroup.isEmpty()) {
+            if (this.regexOptionSet.isEmpty()) {
                 fluentRegex.matcher = Pattern.compile(this.regexPattern.getTag()).matcher(this.input);
             } else {
-                fluentRegex.matcher = Pattern
-                        .compile(this.regexPattern.getTag(), this.regexOptionGroup.getRegexOption())
+                fluentRegex.matcher = Pattern.compile(this.regexPattern.getTag(), this.getRegexOption())
                         .matcher(this.input);
             }
 
             return fluentRegex;
+        }
+
+        /**
+         * Return the total of the regex options that were set.
+         *
+         * @return The total of the regex options
+         */
+        private int getRegexOption() {
+
+            int regexOption = 0;
+
+            for (RegexOption option : this.regexOptionSet) {
+                regexOption |= option.getTag();
+            }
+
+            return regexOption;
         }
     }
 
