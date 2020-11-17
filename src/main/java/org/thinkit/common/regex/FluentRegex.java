@@ -69,6 +69,11 @@ public final class FluentRegex {
         private CharSequence input;
 
         /**
+         * The option
+         */
+        private Option option = Option.of();
+
+        /**
          * Defalut constructor
          */
         private Builder() {
@@ -101,6 +106,19 @@ public final class FluentRegex {
         }
 
         /**
+         * Sets the regex option.
+         *
+         * @param option The regex option
+         * @return The instance of {@link Builder}
+         *
+         * @exception NullPointerException If {@code null} is passed as an argument
+         */
+        public Builder option(@NonNull Option option) {
+            this.option = option;
+            return this;
+        }
+
+        /**
          * Returns the new instance of {@link FluentRegex} .
          *
          * @return The new instance of {@link FluentRegex}
@@ -113,7 +131,13 @@ public final class FluentRegex {
             Preconditions.requireNonNull(this.input, new IllegalStateException("The input is required"));
 
             final FluentRegex fluentRegex = new FluentRegex();
-            fluentRegex.matcher = Pattern.compile(this.regexPattern.getTag()).matcher(this.input);
+
+            if (this.option.isEmpty()) {
+                fluentRegex.matcher = Pattern.compile(this.regexPattern.getTag()).matcher(this.input);
+            } else {
+                fluentRegex.matcher = Pattern.compile(this.regexPattern.getTag(), this.option.getRegexOption())
+                        .matcher(this.input);
+            }
 
             return fluentRegex;
         }
