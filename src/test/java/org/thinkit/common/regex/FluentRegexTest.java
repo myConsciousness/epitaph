@@ -719,7 +719,6 @@ final class FluentRegexTest {
         @ParameterizedTest
         @ValueSource(strings = { "192.168.0.24:0", "255.255.255.255:0", "255.255.255.255:09", "255.255.255.255:099",
                 "255.255.255.255:0999", "255.255.255.255:09999" })
-
         void testFind(final String parameter) {
             assertTrue(
                     FluentRegex.builder().pattern(RegexPattern.IP_ADDRESS_WITH_PORT).input(parameter).build().find());
@@ -777,7 +776,6 @@ final class FluentRegexTest {
 
         @ParameterizedTest
         @ValueSource(strings = { "0", "00000" })
-
         void testFind(final String parameter) {
             assertTrue(FluentRegex.builder().pattern(RegexPattern.NUMERIC).input(parameter).build().find());
         }
@@ -818,7 +816,6 @@ final class FluentRegexTest {
 
         @ParameterizedTest
         @ValueSource(strings = { "test", "Test", "0000", "Test001" })
-
         void testFind(final String parameter) {
             assertTrue(FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC).input(parameter).build().find());
         }
@@ -859,7 +856,6 @@ final class FluentRegexTest {
 
         @ParameterizedTest
         @ValueSource(strings = { "test", "Test", "TEST" })
-
         void testFind(final String parameter) {
             assertTrue(FluentRegex.builder().pattern(RegexPattern.ALPHABET).input(parameter).build().find());
         }
@@ -892,6 +888,96 @@ final class FluentRegexTest {
         @ValueSource(strings = { "test@", "Test!", "0000", "Test?" })
         void testNotMatch(final String parameter) {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.ALPHABET).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestAlphabetUpperCasePattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "TEST" })
+        void testFind(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.ALPHABET_UPPER_CASE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "TEST" })
+        void testLookingAt(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.ALPHABET_UPPER_CASE).input(parameter).build()
+                    .lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "TEST" })
+        void testMatches(final String parameter) {
+            assertTrue(
+                    FluentRegex.builder().pattern(RegexPattern.ALPHABET_UPPER_CASE).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test@", "Test!", "0000", "Test?", "TESt" })
+        void testNotFind(final String parameter) {
+            assertFalse(
+                    FluentRegex.builder().pattern(RegexPattern.ALPHABET_UPPER_CASE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test@", "Test!", "0000", "Test?", "TESt" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.ALPHABET_UPPER_CASE).input(parameter).build()
+                    .lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test@", "Test!", "0000", "Test?", "TESt" })
+        void testNotMatch(final String parameter) {
+            assertFalse(
+                    FluentRegex.builder().pattern(RegexPattern.ALPHABET_UPPER_CASE).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestAlphabetLowerCasePattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test" })
+        void testFind(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.ALPHABET_LOWER_CASE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test" })
+        void testLookingAt(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.ALPHABET_LOWER_CASE).input(parameter).build()
+                    .lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test" })
+        void testMatches(final String parameter) {
+            assertTrue(
+                    FluentRegex.builder().pattern(RegexPattern.ALPHABET_LOWER_CASE).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test@", "Test!", "0000", "test?", "tesT" })
+        void testNotFind(final String parameter) {
+            assertFalse(
+                    FluentRegex.builder().pattern(RegexPattern.ALPHABET_LOWER_CASE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test@", "Test!", "0000", "test?", "tesT" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.ALPHABET_LOWER_CASE).input(parameter).build()
+                    .lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test@", "Test!", "0000", "test?", "tesT" })
+        void testNotMatch(final String parameter) {
+            assertFalse(
+                    FluentRegex.builder().pattern(RegexPattern.ALPHABET_LOWER_CASE).input(parameter).build().matches());
         }
     }
 }
