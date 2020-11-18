@@ -812,4 +812,51 @@ final class FluentRegexTest {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.NUMERIC).input(parameter).build().matches());
         }
     }
+
+    @Nested
+    class TestAlphanumericCharacterPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "Test", "0000", "Test001" })
+
+        void testFind(final String parameter) {
+            assertTrue(
+                    FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC_CHARACTER).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "Test", "0000", "Test001" })
+        void testLookingAt(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC_CHARACTER).input(parameter).build()
+                    .lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "Test", "0000", "Test001" })
+        void testMatches(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC_CHARACTER).input(parameter).build()
+                    .matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test@", "Test!", "0000-", "Test001?" })
+        void testNotFind(final String parameter) {
+            assertFalse(
+                    FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC_CHARACTER).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test@", "Test!", "0000-", "Test001?" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC_CHARACTER).input(parameter).build()
+                    .lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test@", "Test!", "0000-", "Test001?" })
+        void testNotMatch(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC_CHARACTER).input(parameter).build()
+                    .matches());
+        }
+    }
 }
