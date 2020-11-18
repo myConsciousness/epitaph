@@ -177,7 +177,6 @@ final class FluentRegexTest {
         @ValueSource(strings = { "myconsciousness.github.io/", "httpp://myconsciousness.github.io/",
                 "ftp://myconsciousness.github.io/", "https://myconsciousness-github-io/",
                 "smtp://myconsciousness.github.io/" })
-
         void testNotLookingAt(final String parameter) {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.WEB_URL).input(parameter).build().lookingAt());
         }
@@ -221,7 +220,6 @@ final class FluentRegexTest {
 
         @ParameterizedTest
         @ValueSource(strings = { "テスト", "テスト", "試験", "!", "01234567", "shinya-kato", "shinya/kato" })
-
         void testNotLookingAt(final String parameter) {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.USER_ID).input(parameter).build().lookingAt());
         }
@@ -266,7 +264,6 @@ final class FluentRegexTest {
 
         @ParameterizedTest
         @ValueSource(strings = { "test", "テスト", "試験", "@", "00-0000-0000", "12000000000" })
-
         void testNotLookingAt(final String parameter) {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.FIXED_LINE_PHONE_JP).input(parameter).build()
                     .lookingAt());
@@ -314,7 +311,6 @@ final class FluentRegexTest {
 
         @ParameterizedTest
         @ValueSource(strings = { "test", "テスト", "試験", "@", "0000000000", "12-0000-00000" })
-
         void testNotLookingAt(final String parameter) {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.FIXED_LINE_PHONE_WITH_HYPHEN_JP).input(parameter)
                     .build().lookingAt());
@@ -325,6 +321,98 @@ final class FluentRegexTest {
         void testNotMatch(final String parameter) {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.FIXED_LINE_PHONE_WITH_HYPHEN_JP).input(parameter)
                     .build().matches());
+        }
+    }
+
+    @Nested
+    class TestCellPhoneJpPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "07000000000", "08000000000", "09000000000" })
+        void testFind(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.CELL_PHONE_JP).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "07000000000", "08000000000", "09000000000" })
+        void testLookingAt(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.CELL_PHONE_JP).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "07000000000", "08000000000", "09000000000" })
+        void testMatches(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.CELL_PHONE_JP).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "070-0000-0000", "080-0000-0000", "090-0000-0000", "test", "テスト", "試験", "@",
+                "070000000001", "080000000001", "090000000001" })
+        void testNotFind(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.CELL_PHONE_JP).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "070-0000-0000", "080-0000-0000", "090-0000-0000", "test", "テスト", "試験", "@",
+                "070000000001", "080000000001", "090000000001" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.CELL_PHONE_JP).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "070-0000-0000", "080-0000-0000", "090-0000-0000", "test", "テスト", "試験", "@",
+                "070000000001", "080000000001", "090000000001" })
+        void testNotMatch(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.CELL_PHONE_JP).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestCellPhoneWithHypenJpPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "070-0000-0000", "080-0000-0000", "090-0000-0000" })
+        void testFind(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.CELL_PHONE_WITH_HYPHEN_JP).input(parameter).build()
+                    .find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "070-0000-0000", "080-0000-0000", "090-0000-0000" })
+        void testLookingAt(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.CELL_PHONE_WITH_HYPHEN_JP).input(parameter).build()
+                    .lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "070-0000-0000", "080-0000-0000", "090-0000-0000" })
+        void testMatches(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.CELL_PHONE_WITH_HYPHEN_JP).input(parameter).build()
+                    .matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "07000000000", "08000000000", "09000000000", "test", "テスト", "試験", "@",
+                "070-0000-00001", "080-0000-00001", "090-0000-00001" })
+        void testNotFind(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.CELL_PHONE_WITH_HYPHEN_JP).input(parameter).build()
+                    .find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "07000000000", "08000000000", "09000000000", "test", "テスト", "試験", "@",
+                "070-0000-00001", "080-0000-00001", "090-0000-00001" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.CELL_PHONE_WITH_HYPHEN_JP).input(parameter).build()
+                    .lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "07000000000", "08000000000", "09000000000", "test", "テスト", "試験", "@",
+                "070-0000-00001", "080-0000-00001", "090-0000-00001" })
+        void testNotMatch(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.CELL_PHONE_WITH_HYPHEN_JP).input(parameter).build()
+                    .matches());
         }
     }
 }
