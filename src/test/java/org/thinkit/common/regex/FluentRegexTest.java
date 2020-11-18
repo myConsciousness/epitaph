@@ -771,4 +771,45 @@ final class FluentRegexTest {
                     .matches());
         }
     }
+
+    @Nested
+    class TestNumericPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "0", "00000" })
+
+        void testFind(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.NUMERIC).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "0", "00000" })
+        void testLookingAt(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.NUMERIC).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "0", "00000" })
+        void testMatches(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.NUMERIC).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "0test", "test", "テスト", "テスト", "試験", "!^@" })
+        void testNotFind(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.NUMERIC).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "0test", "test", "テスト", "テスト", "試験", "!^@" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.NUMERIC).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "0test", "test", "テスト", "テスト", "試験", "!^@" })
+        void testNotMatch(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.NUMERIC).input(parameter).build().matches());
+        }
+    }
 }
