@@ -820,43 +820,78 @@ final class FluentRegexTest {
         @ValueSource(strings = { "test", "Test", "0000", "Test001" })
 
         void testFind(final String parameter) {
-            assertTrue(
-                    FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC_CHARACTER).input(parameter).build().find());
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC).input(parameter).build().find());
         }
 
         @ParameterizedTest
         @ValueSource(strings = { "test", "Test", "0000", "Test001" })
         void testLookingAt(final String parameter) {
-            assertTrue(FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC_CHARACTER).input(parameter).build()
-                    .lookingAt());
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC).input(parameter).build().lookingAt());
         }
 
         @ParameterizedTest
         @ValueSource(strings = { "test", "Test", "0000", "Test001" })
         void testMatches(final String parameter) {
-            assertTrue(FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC_CHARACTER).input(parameter).build()
-                    .matches());
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC).input(parameter).build().matches());
         }
 
         @ParameterizedTest
         @ValueSource(strings = { "test@", "Test!", "0000-", "Test001?" })
         void testNotFind(final String parameter) {
-            assertFalse(
-                    FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC_CHARACTER).input(parameter).build().find());
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC).input(parameter).build().find());
         }
 
         @ParameterizedTest
         @ValueSource(strings = { "test@", "Test!", "0000-", "Test001?" })
         void testNotLookingAt(final String parameter) {
-            assertFalse(FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC_CHARACTER).input(parameter).build()
-                    .lookingAt());
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC).input(parameter).build().lookingAt());
         }
 
         @ParameterizedTest
         @ValueSource(strings = { "test@", "Test!", "0000-", "Test001?" })
         void testNotMatch(final String parameter) {
-            assertFalse(FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC_CHARACTER).input(parameter).build()
-                    .matches());
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.ALPHANUMERIC).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestAlphabetPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "Test", "TEST" })
+
+        void testFind(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.ALPHABET).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "Test", "TEST" })
+        void testLookingAt(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.ALPHABET).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "Test", "TEST" })
+        void testMatches(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.ALPHABET).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test@", "Test!", "0000", "Test?" })
+        void testNotFind(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.ALPHABET).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test@", "Test!", "0000", "Test?" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.ALPHABET).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test@", "Test!", "0000", "Test?" })
+        void testNotMatch(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.ALPHABET).input(parameter).build().matches());
         }
     }
 }

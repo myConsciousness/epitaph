@@ -123,7 +123,7 @@ public enum RegexPattern implements BiCatalog<RegexPattern, String> {
 	/**
 	 * Alphanumeric character
 	 */
-	ALPHANUMERIC_CHARACTER(17, "^[A-Za-z0-9]+$"),
+	ALPHANUMERIC(17, "^[A-Za-z0-9]+$"),
 
 	/**
 	 * Alphabet
