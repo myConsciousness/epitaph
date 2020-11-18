@@ -80,17 +80,17 @@ public enum RegexPattern implements BiCatalog<RegexPattern, String> {
 	/**
 	 * Date (yyyyMMdd format)
 	 */
-	DATE(9, "^\\d{4}\\d{1,2}\\d{1,2}$"),
+	DATE(9, "^[0-9]{4}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])$"),
 
 	/**
-	 * Date with hyphen (yyyyMMdd format)
+	 * Date with hyphen (yyyy-MM-dd format)
 	 */
-	DATE_WITH_HYPHEN(10, "^\\d{4}-\\d{1,2}-\\d{1,2}$"),
+	DATE_WITH_HYPHEN(10, "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$"),
 
 	/**
 	 * Date with slash (yyyyMMdd format)
 	 */
-	DATE_WITH_SLASH(11, "^\\d{4}\\\\d{1,2}\\\\d{1,2}$"),
+	DATE_WITH_SLASH(11, "^[0-9]{4}/(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])$"),
 
 	/**
 	 * Post code (Japan)

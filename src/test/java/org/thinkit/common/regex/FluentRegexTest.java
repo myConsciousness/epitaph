@@ -458,4 +458,129 @@ final class FluentRegexTest {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.PASSWORD).input(parameter).build().matches());
         }
     }
+
+    @Nested
+    class TestDatePattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "20201118" })
+        void testFind(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.DATE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "20201118" })
+        void testLookingAt(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.DATE).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "20201118" })
+        void testMatches(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.DATE).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "20201301", "20201232", "2020-01-01", "2020/01/01" })
+        void testNotFind(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.DATE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "20201301", "20201232", "2020-01-01", "2020/01/01" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.DATE).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "20201301", "20201232", "2020-01-01", "2020/01/01" })
+        void testNotMatch(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.DATE).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestDateWithHyphenPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "2020-11-18" })
+        void testFind(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.DATE_WITH_HYPHEN).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "2020-11-18" })
+        void testLookingAt(final String parameter) {
+            assertTrue(
+                    FluentRegex.builder().pattern(RegexPattern.DATE_WITH_HYPHEN).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "2020-11-18" })
+        void testMatches(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.DATE_WITH_HYPHEN).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "2020-13-01", "2020-12-32", "20200101", "2020/01/01" })
+        void testNotFind(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.DATE_WITH_HYPHEN).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "2020-13-01", "2020-12-32", "20200101", "2020/01/01" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(
+                    FluentRegex.builder().pattern(RegexPattern.DATE_WITH_HYPHEN).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "2020-13-01", "2020-12-32", "20200101", "2020/01/01" })
+        void testNotMatch(final String parameter) {
+            assertFalse(
+                    FluentRegex.builder().pattern(RegexPattern.DATE_WITH_HYPHEN).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestDateWithSlashPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "2020/11/18" })
+        void testFind(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.DATE_WITH_SLASH).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "2020/11/18" })
+        void testLookingAt(final String parameter) {
+            assertTrue(
+                    FluentRegex.builder().pattern(RegexPattern.DATE_WITH_SLASH).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "2020/11/18" })
+        void testMatches(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.DATE_WITH_SLASH).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "2020/13/01", "2020/12/32", "20200101", "2020-01-01" })
+        void testNotFind(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.DATE_WITH_SLASH).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "2020/13/01", "2020/12/32", "20200101", "2020-01-01" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(
+                    FluentRegex.builder().pattern(RegexPattern.DATE_WITH_SLASH).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "2020/13/01", "2020/12/32", "20200101", "2020-01-01" })
+        void testNotMatch(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.DATE_WITH_SLASH).input(parameter).build().matches());
+        }
+    }
 }
