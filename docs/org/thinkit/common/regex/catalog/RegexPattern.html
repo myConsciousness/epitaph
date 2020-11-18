@@ -139,7 +139,7 @@ implements org.thinkit.api.catalog.BiCatalog&lt;<a href="RegexPattern.html" titl
 </td>
 </tr>
 <tr class="row-color">
-<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#ALPHANUMERIC_CHARACTER">ALPHANUMERIC_CHARACTER</a></span></code></th>
+<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#ALPHANUMERIC">ALPHANUMERIC</a></span></code></th>
 <td class="col-last">
 <div class="block">Alphanumeric character</div>
 </td>
@@ -165,7 +165,7 @@ implements org.thinkit.api.catalog.BiCatalog&lt;<a href="RegexPattern.html" titl
 <tr class="row-color">
 <th class="col-first" scope="row"><code><span class="member-name-link"><a href="#DATE_WITH_HYPHEN">DATE_WITH_HYPHEN</a></span></code></th>
 <td class="col-last">
-<div class="block">Date with hyphen (yyyyMMdd format)</div>
+<div class="block">Date with hyphen (yyyy-MM-dd format)</div>
 </td>
 </tr>
 <tr class="alt-color">
@@ -199,15 +199,39 @@ implements org.thinkit.api.catalog.BiCatalog&lt;<a href="RegexPattern.html" titl
 </td>
 </tr>
 <tr class="row-color">
-<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#IP_ADDRESS">IP_ADDRESS</a></span></code></th>
+<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#FTP_URL">FTP_URL</a></span></code></th>
 <td class="col-last">
-<div class="block">IP address</div>
+<div class="block">FTP URL</div>
 </td>
 </tr>
 <tr class="alt-color">
+<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#IP_ADDRESS">IP_ADDRESS</a></span></code></th>
+<td class="col-last">
+<div class="block">IP address (IPv4)</div>
+</td>
+</tr>
+<tr class="row-color">
 <th class="col-first" scope="row"><code><span class="member-name-link"><a href="#IP_ADDRESS_WITH_PORT">IP_ADDRESS_WITH_PORT</a></span></code></th>
 <td class="col-last">
-<div class="block">IP address with port</div>
+<div class="block">IP address with port (IPv4)</div>
+</td>
+</tr>
+<tr class="alt-color">
+<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#JAPANESE_KANJI">JAPANESE_KANJI</a></span></code></th>
+<td class="col-last">
+<div class="block">Japanese Kanji</div>
+</td>
+</tr>
+<tr class="row-color">
+<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#JAVA_FILE">JAVA_FILE</a></span></code></th>
+<td class="col-last">
+<div class="block">Java file</div>
+</td>
+</tr>
+<tr class="alt-color">
+<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#JSON_FILE">JSON_FILE</a></span></code></th>
+<td class="col-last">
+<div class="block">JSON file</div>
 </td>
 </tr>
 <tr class="row-color">
@@ -229,21 +253,27 @@ implements org.thinkit.api.catalog.BiCatalog&lt;<a href="RegexPattern.html" titl
 </td>
 </tr>
 <tr class="alt-color">
+<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#TEXT_FILE">TEXT_FILE</a></span></code></th>
+<td class="col-last">
+<div class="block">Text file</div>
+</td>
+</tr>
+<tr class="row-color">
 <th class="col-first" scope="row"><code><span class="member-name-link"><a href="#USER_ID">USER_ID</a></span></code></th>
 <td class="col-last">
 <div class="block">User id</div>
 </td>
 </tr>
-<tr class="row-color">
+<tr class="alt-color">
 <th class="col-first" scope="row"><code><span class="member-name-link"><a href="#WEB_URL">WEB_URL</a></span></code></th>
 <td class="col-last">
 <div class="block">Web URL</div>
 </td>
 </tr>
-<tr class="alt-color">
-<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#XML">XML</a></span></code></th>
+<tr class="row-color">
+<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#XML_FILE">XML_FILE</a></span></code></th>
 <td class="col-last">
-<div class="block">XML</div>
+<div class="block">XML file</div>
 </td>
 </tr>
 </tbody>
@@ -380,7 +410,10 @@ the order they are declared.</div>
 <section class="detail" id="PASSWORD">
 <h3>PASSWORD</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a></span>&nbsp;<span class="member-name">PASSWORD</span></div>
-<div class="block">Password</div>
+<div class="block">Password
+ <p>
+ Ensures that password will contain at least 1 upper case letter, 1 lower case
+ letter, 1 number or special character, 8-32 characters in length.</div>
 </section>
 </li>
 <li>
@@ -394,7 +427,7 @@ the order they are declared.</div>
 <section class="detail" id="DATE_WITH_HYPHEN">
 <h3>DATE_WITH_HYPHEN</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a></span>&nbsp;<span class="member-name">DATE_WITH_HYPHEN</span></div>
-<div class="block">Date with hyphen (yyyyMMdd format)</div>
+<div class="block">Date with hyphen (yyyy-MM-dd format)</div>
 </section>
 </li>
 <li>
@@ -412,24 +445,24 @@ the order they are declared.</div>
 </section>
 </li>
 <li>
-<section class="detail" id="XML">
-<h3>XML</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a></span>&nbsp;<span class="member-name">XML</span></div>
-<div class="block">XML</div>
+<section class="detail" id="XML_FILE">
+<h3>XML_FILE</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a></span>&nbsp;<span class="member-name">XML_FILE</span></div>
+<div class="block">XML file</div>
 </section>
 </li>
 <li>
 <section class="detail" id="IP_ADDRESS">
 <h3>IP_ADDRESS</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a></span>&nbsp;<span class="member-name">IP_ADDRESS</span></div>
-<div class="block">IP address</div>
+<div class="block">IP address (IPv4)</div>
 </section>
 </li>
 <li>
 <section class="detail" id="IP_ADDRESS_WITH_PORT">
 <h3>IP_ADDRESS_WITH_PORT</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a></span>&nbsp;<span class="member-name">IP_ADDRESS_WITH_PORT</span></div>
-<div class="block">IP address with port</div>
+<div class="block">IP address with port (IPv4)</div>
 </section>
 </li>
 <li>
@@ -440,9 +473,9 @@ the order they are declared.</div>
 </section>
 </li>
 <li>
-<section class="detail" id="ALPHANUMERIC_CHARACTER">
-<h3>ALPHANUMERIC_CHARACTER</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a></span>&nbsp;<span class="member-name">ALPHANUMERIC_CHARACTER</span></div>
+<section class="detail" id="ALPHANUMERIC">
+<h3>ALPHANUMERIC</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a></span>&nbsp;<span class="member-name">ALPHANUMERIC</span></div>
 <div class="block">Alphanumeric character</div>
 </section>
 </li>
@@ -465,6 +498,41 @@ the order they are declared.</div>
 <h3>ALPHABET_LOWER_CASE</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a></span>&nbsp;<span class="member-name">ALPHABET_LOWER_CASE</span></div>
 <div class="block">Alphabet (lower case)</div>
+</section>
+</li>
+<li>
+<section class="detail" id="FTP_URL">
+<h3>FTP_URL</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a></span>&nbsp;<span class="member-name">FTP_URL</span></div>
+<div class="block">FTP URL</div>
+</section>
+</li>
+<li>
+<section class="detail" id="JAVA_FILE">
+<h3>JAVA_FILE</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a></span>&nbsp;<span class="member-name">JAVA_FILE</span></div>
+<div class="block">Java file</div>
+</section>
+</li>
+<li>
+<section class="detail" id="TEXT_FILE">
+<h3>TEXT_FILE</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a></span>&nbsp;<span class="member-name">TEXT_FILE</span></div>
+<div class="block">Text file</div>
+</section>
+</li>
+<li>
+<section class="detail" id="JSON_FILE">
+<h3>JSON_FILE</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a></span>&nbsp;<span class="member-name">JSON_FILE</span></div>
+<div class="block">JSON file</div>
+</section>
+</li>
+<li>
+<section class="detail" id="JAPANESE_KANJI">
+<h3>JAPANESE_KANJI</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="RegexPattern.html" title="enum in org.thinkit.common.regex.catalog">RegexPattern</a></span>&nbsp;<span class="member-name">JAPANESE_KANJI</span></div>
+<div class="block">Japanese Kanji</div>
 </section>
 </li>
 </ul>
