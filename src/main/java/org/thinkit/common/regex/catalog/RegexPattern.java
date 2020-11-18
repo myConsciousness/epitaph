@@ -138,7 +138,27 @@ public enum RegexPattern implements BiCatalog<RegexPattern, String> {
 	/**
 	 * Alphabet (lower case)
 	 */
-	ALPHABET_LOWER_CASE(20, "^[a-z]+$");
+	ALPHABET_LOWER_CASE(20, "^[a-z]+$"),
+
+	/**
+	 * FTP URL
+	 */
+	FTP_URL(21, "ftp://([a-z0-9]+:[a-z0-9]+@)?([\\.a-z0-9]+)/([\\./a-z0-9]+)$"),
+
+	/**
+	 * Java file
+	 */
+	JAVA_FILE(22, "^([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[j|J][a|A][v|V][a|A]$"),
+
+	/**
+	 * Text file
+	 */
+	TEXT_FILE(23, "^([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[t|T][e|E][x|X][t|T]$"),
+
+	/**
+	 * JSON file
+	 */
+	JSON_FILE(24, "^([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[j|J][a|A][s|S][n|N]$");
 
 	/**
 	 * The code

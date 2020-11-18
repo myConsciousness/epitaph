@@ -62,6 +62,10 @@ final class RegexPatternTest {
             put(18, "^[A-Za-z]+$");
             put(19, "^[A-Z]+$");
             put(20, "^[a-z]+$");
+            put(21, "ftp://([a-z0-9]+:[a-z0-9]+@)?([\\.a-z0-9]+)/([\\./a-z0-9]+)$");
+            put(22, "^([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[j|J][a|A][v|V][a|A]$");
+            put(23, "^([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[t|T][e|E][x|X][t|T]$");
+            put(24, "^([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[j|J][a|A][s|S][n|N]$");
         }
     };
 
