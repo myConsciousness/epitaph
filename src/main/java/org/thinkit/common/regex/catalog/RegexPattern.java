@@ -163,7 +163,47 @@ public enum RegexPattern implements BiCatalog<RegexPattern, String> {
 	/**
 	 * Japanese Kanji
 	 */
-	JAPANESE_KANJI(25, "[一-龯]");
+	JAPANESE_KANJI(25, "[一-龯]+"),
+
+	/**
+	 * Hiragana
+	 */
+	HIRAGANA(26, "[ぁ-ん]+"),
+
+	/**
+	 * Hiragana (upper case)
+	 */
+	HIRAGANA_UPPER_CASE(27, "[あ-ん]+"),
+
+	/**
+	 * Hiragana (lower case)
+	 */
+	HIRAGANA_LOWER_CASE(28, "[ぁぃぅぇぉゕゖっゃゅょゎ]+"),
+
+	/**
+	 * Katakana
+	 */
+	KATAKANA(29, "[ァ-ン]+"),
+
+	/**
+	 * Katakana (upper case)
+	 */
+	KATAKANA_UPPER_CASE(30, "[ア-ン]+"),
+
+	/**
+	 * Katakana (lower case)
+	 */
+	KATAKANA_LOWER_CASE(31, "[ァィゥェォヵヶッャュョヮ]+"),
+
+	/**
+	 * Japanese alphabet
+	 */
+	JAPANESE_ALPHABET(32, "[ぁ-んァ-ン]+"),
+
+	/**
+	 * Japanese alphanumeric
+	 */
+	JAPANESE_ALPHANUMERIC(33, "[ぁ-んァ-ン0-9]+");
 
 	/**
 	 * The code
