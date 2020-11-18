@@ -232,4 +232,99 @@ final class FluentRegexTest {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.USER_ID).input(parameter).build().matches());
         }
     }
+
+    @Nested
+    class TestFixedPhoneJpPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "0000000000" })
+        void testFind(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.FIXED_LINE_PHONE_JP).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "0000000000" })
+        void testLookingAt(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.FIXED_LINE_PHONE_JP).input(parameter).build()
+                    .lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "0000000000" })
+        void testMatches(final String parameter) {
+            assertTrue(
+                    FluentRegex.builder().pattern(RegexPattern.FIXED_LINE_PHONE_JP).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "テスト", "試験", "@", "00-0000-0000", "12000000000" })
+
+        void testNotFind(final String parameter) {
+            assertFalse(
+                    FluentRegex.builder().pattern(RegexPattern.FIXED_LINE_PHONE_JP).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "テスト", "試験", "@", "00-0000-0000", "12000000000" })
+
+        void testNotLookingAt(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.FIXED_LINE_PHONE_JP).input(parameter).build()
+                    .lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "テスト", "試験", "@", "00-0000-0000", "12000000000" })
+        void testNotMatch(final String parameter) {
+            assertFalse(
+                    FluentRegex.builder().pattern(RegexPattern.FIXED_LINE_PHONE_JP).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestFixedPhoneWithHypenJpPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "00-0000-0000" })
+        void testFind(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.FIXED_LINE_PHONE_WITH_HYPHEN_JP).input(parameter)
+                    .build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "00-0000-0000" })
+        void testLookingAt(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.FIXED_LINE_PHONE_WITH_HYPHEN_JP).input(parameter)
+                    .build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "00-0000-0000" })
+        void testMatches(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.FIXED_LINE_PHONE_WITH_HYPHEN_JP).input(parameter)
+                    .build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "テスト", "試験", "@", "0000000000", "12-0000-00000" })
+
+        void testNotFind(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.FIXED_LINE_PHONE_WITH_HYPHEN_JP).input(parameter)
+                    .build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "テスト", "試験", "@", "0000000000", "12-0000-00000" })
+
+        void testNotLookingAt(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.FIXED_LINE_PHONE_WITH_HYPHEN_JP).input(parameter)
+                    .build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "テスト", "試験", "@", "0000000000", "12-0000-00000" })
+        void testNotMatch(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.FIXED_LINE_PHONE_WITH_HYPHEN_JP).input(parameter)
+                    .build().matches());
+        }
+    }
 }
