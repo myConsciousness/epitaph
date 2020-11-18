@@ -47,7 +47,7 @@ public enum RegexPattern implements BiCatalog<RegexPattern, String> {
 	/**
 	 * User id
 	 */
-	USER_ID(3, "(?i)^(?=.*[a-z])[a-z0-9_.]{0,}$"),
+	USER_ID(3, "(?i)^(?=.*[a-z])[a-z0-9_.]{0,32}$"),
 
 	/**
 	 * Fixed line phone (Japan)
