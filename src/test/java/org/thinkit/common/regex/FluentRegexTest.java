@@ -623,4 +623,152 @@ final class FluentRegexTest {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.POST_CODE_JP).input(parameter).build().matches());
         }
     }
+
+    @Nested
+    class TestXmlPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test.xml", "Test.xml", "test.XML", "Test.XML", "test.Xml", "test.XMl", "test.xMl",
+                "test.xML", "test.xmL", "test.xMl", "test.XmL" })
+        void testFind(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.XML_FILE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test.xml", "Test.xml", "test.XML", "Test.XML", "test.Xml", "test.XMl", "test.xMl",
+                "test.xML", "test.xmL", "test.xMl", "test.XmL" })
+        void testLookingAt(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.XML_FILE).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test.xml", "Test.xml", "test.XML", "Test.XML", "test.Xml", "test.XMl", "test.xMl",
+                "test.xML", "test.xmL", "test.xMl", "test.XmL" })
+        void testMatches(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.XML_FILE).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "!.xml", "!.xmls", "testxml", "てすと.xml", "テスト.xml", "試験.xml" })
+        void testNotFind(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.XML_FILE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "!.xml", "!.xmls", "testxml", "てすと.xml", "テスト.xml", "試験.xml" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.XML_FILE).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "!.xml", "!.xmls", "testxml", "てすと.xml", "テスト.xml", "試験.xml" })
+        void testNotMatch(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.XML_FILE).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestIpAddressPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "255.255.255.255", "192.168.0.24" })
+        void testFind(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.IP_ADDRESS).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "255.255.255.255", "192.168.0.24" })
+        void testLookingAt(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.IP_ADDRESS).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "255.255.255.255", "192.168.0.24" })
+        void testMatches(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.IP_ADDRESS).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "256.255.255.255", "255.256.255.255", "255.255.256.255", "255.255.255.256",
+                "2551.255.255.255", "255.2551.255.255", "255.255.2551.255", "255.255.255.2551",
+                "255.255.255.2551:0000" })
+        void testNotFind(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.IP_ADDRESS).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "256.255.255.255", "255.256.255.255", "255.255.256.255", "255.255.255.256",
+                "2551.255.255.255", "255.2551.255.255", "255.255.2551.255", "255.255.255.2551",
+                "255.255.255.2551:0000" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.IP_ADDRESS).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "256.255.255.255", "255.256.255.255", "255.255.256.255", "255.255.255.256",
+                "2551.255.255.255", "255.2551.255.255", "255.255.2551.255", "255.255.255.2551",
+                "255.255.255.2551:0000" })
+        void testNotMatch(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.IP_ADDRESS).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestIpAddressWithPortPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "192.168.0.24:0", "255.255.255.255:0", "255.255.255.255:09", "255.255.255.255:099",
+                "255.255.255.255:0999", "255.255.255.255:09999" })
+
+        void testFind(final String parameter) {
+            assertTrue(
+                    FluentRegex.builder().pattern(RegexPattern.IP_ADDRESS_WITH_PORT).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "192.168.0.24:0", "255.255.255.255:0", "255.255.255.255:09", "255.255.255.255:099",
+                "255.255.255.255:0999", "255.255.255.255:09999" })
+        void testLookingAt(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.IP_ADDRESS_WITH_PORT).input(parameter).build()
+                    .lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "192.168.0.24:0", "255.255.255.255:0", "255.255.255.255:09", "255.255.255.255:099",
+                "255.255.255.255:0999", "255.255.255.255:09999" })
+        void testMatches(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.IP_ADDRESS_WITH_PORT).input(parameter).build()
+                    .matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "256.255.255.255", "255.256.255.255", "255.255.256.255", "255.255.255.256",
+                "2551.255.255.255", "255.2551.255.255", "255.255.2551.255", "255.255.255.2551", "256.255.255.255:00",
+                "255.256.255.255:00", "255.255.256.255:00", "255.255.255.256:00", "2551.255.255.255:00",
+                "255.2551.255.255:00", "255.255.2551.255:00", "255.255.255.2551:00" })
+        void testNotFind(final String parameter) {
+            assertFalse(
+                    FluentRegex.builder().pattern(RegexPattern.IP_ADDRESS_WITH_PORT).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "256.255.255.255", "255.256.255.255", "255.255.256.255", "255.255.255.256",
+                "2551.255.255.255", "255.2551.255.255", "255.255.2551.255", "255.255.255.2551", "256.255.255.255:00",
+                "255.256.255.255:00", "255.255.256.255:00", "255.255.255.256:00", "2551.255.255.255:00",
+                "255.2551.255.255:00", "255.255.2551.255:00", "255.255.255.2551:00" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.IP_ADDRESS_WITH_PORT).input(parameter).build()
+                    .lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "256.255.255.255", "255.256.255.255", "255.255.256.255", "255.255.255.256",
+                "2551.255.255.255", "255.2551.255.255", "255.255.2551.255", "255.255.255.2551", "256.255.255.255:00",
+                "255.256.255.255:00", "255.255.256.255:00", "255.255.255.256:00", "2551.255.255.255:00",
+                "255.2551.255.255:00", "255.255.2551.255:00", "255.255.255.2551:00" })
+        void testNotMatch(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.IP_ADDRESS_WITH_PORT).input(parameter).build()
+                    .matches());
+        }
+    }
 }
