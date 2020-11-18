@@ -94,4 +94,95 @@ final class FluentRegexTest {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.EMAIL_ADDRESS).input(parameter).build().matches());
         }
     }
+
+    @Nested
+    class TestDomainNamePattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "gmail.com" })
+        void testFind(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.DOMAIN_NAME).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "gmail.com" })
+        void testLookingAt(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.DOMAIN_NAME).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "gmail.com" })
+        void testMatches(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.DOMAIN_NAME).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test.gmail.com", "my.website.jp", "テスト.co.jp", "test@gmail.com" })
+        void testNotFind(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.DOMAIN_NAME).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test.gmail.com", "my.website.jp", "テスト.co.jp", "test@gmail.com" })
+
+        void testNotLookingAt(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.DOMAIN_NAME).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test.gmail.com", "my.website.jp", "テスト.co.jp", "test@gmail.com" })
+        void testNotMatch(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.DOMAIN_NAME).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestWebUrlPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "https://myconsciousness.github.io/", "http://myconsciousness.github.io/",
+                "http://myconsciousness.github.io/test?something=something" })
+        void testFind(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.WEB_URL).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "https://myconsciousness.github.io/", "http://myconsciousness.github.io/",
+                "http://myconsciousness.github.io/test?something=something" })
+        void testLookingAt(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.WEB_URL).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "https://myconsciousness.github.io/", "http://myconsciousness.github.io/",
+                "http://myconsciousness.github.io/test?something=something" })
+        void testMatches(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.WEB_URL).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "myconsciousness.github.io/", "httpp://myconsciousness.github.io/",
+                "ftp://myconsciousness.github.io/", "https://myconsciousness-github-io/",
+                "smtp://myconsciousness.github.io/" })
+        void testNotFind(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.WEB_URL).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "myconsciousness.github.io/", "httpp://myconsciousness.github.io/",
+                "ftp://myconsciousness.github.io/", "https://myconsciousness-github-io/",
+                "smtp://myconsciousness.github.io/" })
+
+        void testNotLookingAt(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.WEB_URL).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "myconsciousness.github.io/", "httpp://myconsciousness.github.io/",
+                "ftp://myconsciousness.github.io/", "https://myconsciousness-github-io/",
+                "smtp://myconsciousness.github.io/" })
+        void testNotMatch(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.WEB_URL).input(parameter).build().matches());
+        }
+    }
 }
