@@ -420,37 +420,40 @@ final class FluentRegexTest {
     class TestPasswordPattern {
 
         @ParameterizedTest
-        @ValueSource(strings = { "a1234567A", "A1234567a", "a1234567A@" })
+        @ValueSource(strings = { "a1234567A", "A1234567a", "a1234567A@", "a123456789123456789123456789123A" })
         void testFind(final String parameter) {
             assertTrue(FluentRegex.builder().pattern(RegexPattern.PASSWORD).input(parameter).build().find());
         }
 
         @ParameterizedTest
-        @ValueSource(strings = { "a1234567A", "A1234567a", "a1234567A@" })
+        @ValueSource(strings = { "a1234567A", "A1234567a", "a1234567A@", "a123456789123456789123456789123A" })
         void testLookingAt(final String parameter) {
             assertTrue(FluentRegex.builder().pattern(RegexPattern.PASSWORD).input(parameter).build().lookingAt());
         }
 
         @ParameterizedTest
-        @ValueSource(strings = { "a1234567A", "A1234567a", "a1234567A@" })
+        @ValueSource(strings = { "a1234567A", "A1234567a", "a1234567A@", "a123456789123456789123456789123A" })
         void testMatches(final String parameter) {
             assertTrue(FluentRegex.builder().pattern(RegexPattern.PASSWORD).input(parameter).build().matches());
         }
 
         @ParameterizedTest
-        @ValueSource(strings = { "0", "01234567", "012345678", "a12345678", "A12345678", "a12345678@" })
+        @ValueSource(strings = { "0", "01234567", "012345678", "a12345678", "A12345678", "a12345678@",
+                "a1234567891234567891234567891234A" })
         void testNotFind(final String parameter) {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.PASSWORD).input(parameter).build().find());
         }
 
         @ParameterizedTest
-        @ValueSource(strings = { "0", "01234567", "012345678", "a12345678", "A12345678", "a12345678@" })
+        @ValueSource(strings = { "0", "01234567", "012345678", "a12345678", "A12345678", "a12345678@",
+                "a1234567891234567891234567891234A" })
         void testNotLookingAt(final String parameter) {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.PASSWORD).input(parameter).build().lookingAt());
         }
 
         @ParameterizedTest
-        @ValueSource(strings = { "0", "01234567", "012345678", "a12345678", "A12345678", "a12345678@" })
+        @ValueSource(strings = { "0", "01234567", "012345678", "a12345678", "A12345678", "a12345678@",
+                "a1234567891234567891234567891234A" })
         void testNotMatch(final String parameter) {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.PASSWORD).input(parameter).build().matches());
         }
