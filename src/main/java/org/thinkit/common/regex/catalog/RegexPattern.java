@@ -71,8 +71,12 @@ public enum RegexPattern implements BiCatalog<RegexPattern, String> {
 
 	/**
 	 * Password
+	 * <p>
+	 * Ensures that password will contain at least 1 upper case letter, 1 lower case
+	 * letter, 1 number or special character, 8 characters in length, maximum length
+	 * should not be arbitrarily limited.
 	 */
-	PASSWORD(8, "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])."),
+	PASSWORD(8, "((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).{8,}$"),
 
 	/**
 	 * Date (yyyyMMdd format)
