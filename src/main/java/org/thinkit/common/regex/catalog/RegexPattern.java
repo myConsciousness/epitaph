@@ -37,7 +37,7 @@ public enum RegexPattern implements BiCatalog<RegexPattern, String> {
 	/**
 	 * Domain name
 	 */
-	DOMAIN_NAME(1, "^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\\.[a-zA-Z]{2,}$"),
+	DOMAIN_NAME(1, "^((?!-)[A-Za-z0-9-]{1,63}(?<!-)\\.)+[A-Za-z]{2,6}$"),
 
 	/**
 	 * Web URL
@@ -45,9 +45,9 @@ public enum RegexPattern implements BiCatalog<RegexPattern, String> {
 	WEB_URL(2, "^(http|https)://([\\w-]+\\.)+[\\w-]+(/[\\w-./?%&=]*)?$"),
 
 	/**
-	 * User name
+	 * User id
 	 */
-	USER_NAME(3, "^[a-zA-Z0-9_\\-.]"),
+	USER_ID(3, "(?i)^(?=.*[a-z])[a-z0-9_.]{0,}$"),
 
 	/**
 	 * Fixed line phone (Japan)

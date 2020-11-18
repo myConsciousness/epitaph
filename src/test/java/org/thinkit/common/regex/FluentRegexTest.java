@@ -99,38 +99,43 @@ final class FluentRegexTest {
     class TestDomainNamePattern {
 
         @ParameterizedTest
-        @ValueSource(strings = { "gmail.com" })
+        @ValueSource(strings = { "gmail.com", "www.google.com", "Google.COM", "mkyong123.com", "mkyong-info.com",
+                "sub.mkyong.com", "mkyong.t.t.co" })
         void testFind(final String parameter) {
             assertTrue(FluentRegex.builder().pattern(RegexPattern.DOMAIN_NAME).input(parameter).build().find());
         }
 
         @ParameterizedTest
-        @ValueSource(strings = { "gmail.com" })
+        @ValueSource(strings = { "gmail.com", "www.google.com", "Google.COM", "mkyong123.com", "mkyong-info.com",
+                "sub.mkyong.com", "mkyong.t.t.co" })
         void testLookingAt(final String parameter) {
             assertTrue(FluentRegex.builder().pattern(RegexPattern.DOMAIN_NAME).input(parameter).build().lookingAt());
         }
 
         @ParameterizedTest
-        @ValueSource(strings = { "gmail.com" })
+        @ValueSource(strings = { "gmail.com", "www.google.com", "Google.COM", "mkyong123.com", "mkyong-info.com",
+                "sub.mkyong.com", "mkyong.t.t.co" })
         void testMatches(final String parameter) {
             assertTrue(FluentRegex.builder().pattern(RegexPattern.DOMAIN_NAME).input(parameter).build().matches());
         }
 
         @ParameterizedTest
-        @ValueSource(strings = { "test.gmail.com", "my.website.jp", "テスト.co.jp", "test@gmail.com" })
+        @ValueSource(strings = { "mkyong.t.t.c", "mkyong、com ", "mkyong", "mkyong.123", "mkyong.123",
+                "mkyong.com/users", "-mkyong.com", "mkyong-.com", "sub.-mkyong.com", "sub.mkyong-.com" })
         void testNotFind(final String parameter) {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.DOMAIN_NAME).input(parameter).build().find());
         }
 
         @ParameterizedTest
-        @ValueSource(strings = { "test.gmail.com", "my.website.jp", "テスト.co.jp", "test@gmail.com" })
-
+        @ValueSource(strings = { "mkyong.t.t.c", "mkyong、com ", "mkyong", "mkyong.123", "mkyong.123",
+                "mkyong.com/users", "-mkyong.com", "mkyong-.com", "sub.-mkyong.com", "sub.mkyong-.com" })
         void testNotLookingAt(final String parameter) {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.DOMAIN_NAME).input(parameter).build().lookingAt());
         }
 
         @ParameterizedTest
-        @ValueSource(strings = { "test.gmail.com", "my.website.jp", "テスト.co.jp", "test@gmail.com" })
+        @ValueSource(strings = { "mkyong.t.t.c", "mkyong、com ", "mkyong", "mkyong.123", "mkyong.123",
+                "mkyong.com/users", "-mkyong.com", "mkyong-.com", "sub.-mkyong.com", "sub.mkyong-.com" })
         void testNotMatch(final String parameter) {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.DOMAIN_NAME).input(parameter).build().matches());
         }
@@ -183,6 +188,48 @@ final class FluentRegexTest {
                 "smtp://myconsciousness.github.io/" })
         void testNotMatch(final String parameter) {
             assertFalse(FluentRegex.builder().pattern(RegexPattern.WEB_URL).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestUserIdPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "shinya", "shinya_kato", "shinya.kato", "shinya0" })
+        void testFind(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.USER_ID).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "shinya", "shinya_kato", "shinya.kato", "shinya0" })
+        void testLookingAt(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.USER_ID).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "shinya", "shinya_kato", "shinya.kato", "shinya0" })
+        void testMatches(final String parameter) {
+            assertTrue(FluentRegex.builder().pattern(RegexPattern.USER_ID).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "テスト", "テスト", "試験", "!", "01234567", "shinya-kato", "shinya/kato" })
+
+        void testNotFind(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.USER_ID).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "テスト", "テスト", "試験", "!", "01234567", "shinya-kato", "shinya/kato" })
+
+        void testNotLookingAt(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.USER_ID).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "テスト", "テスト", "試験", "!", "01234567", "shinya-kato", "shinya/kato" })
+        void testNotMatch(final String parameter) {
+            assertFalse(FluentRegex.builder().pattern(RegexPattern.USER_ID).input(parameter).build().matches());
         }
     }
 }
