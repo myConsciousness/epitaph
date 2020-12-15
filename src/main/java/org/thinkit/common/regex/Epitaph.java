@@ -14,7 +14,6 @@
 
 package org.thinkit.common.regex;
 
-import java.io.Serializable;
 import java.util.EnumSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -72,12 +71,7 @@ import lombok.ToString;
  */
 @ToString
 @EqualsAndHashCode
-public final class Epitaph implements Serializable {
-
-    /**
-     * The serial version UID
-     */
-    private static final long serialVersionUID = -2248133392969719338L;
+public final class Epitaph {
 
     /**
      * The matcher
