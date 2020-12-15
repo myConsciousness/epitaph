@@ -63,7 +63,7 @@ public final class Epitaph {
         /**
          * The regex pattern
          */
-        private RegexPattern regexPattern;
+        private String regexPattern;
 
         /**
          * The input
@@ -90,6 +90,18 @@ public final class Epitaph {
          * @exception NullPointerException If {@code null} is passed as an argument
          */
         public Builder pattern(@NonNull RegexPattern regexPattern) {
+            return this.pattern(regexPattern.getTag());
+        }
+
+        /**
+         * Sets the regex pattern.
+         *
+         * @param regexPattern The regex pattern
+         * @return The instance of {@link Builder}
+         *
+         * @exception NullPointerException If {@code null} is passed as an argument
+         */
+        public Builder pattern(@NonNull String regexPattern) {
             this.regexPattern = regexPattern;
             return this;
         }
@@ -135,10 +147,9 @@ public final class Epitaph {
             final Epitaph epitaph = new Epitaph();
 
             if (this.regexOptionSet.isEmpty()) {
-                epitaph.matcher = Pattern.compile(this.regexPattern.getTag()).matcher(this.input);
+                epitaph.matcher = Pattern.compile(this.regexPattern).matcher(this.input);
             } else {
-                epitaph.matcher = Pattern.compile(this.regexPattern.getTag(), this.getRegexOption())
-                        .matcher(this.input);
+                epitaph.matcher = Pattern.compile(this.regexPattern, this.getRegexOption()).matcher(this.input);
             }
 
             return epitaph;
