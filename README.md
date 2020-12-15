@@ -1,13 +1,13 @@
 ![Build](https://img.shields.io/badge/Build-Automated-2980b9.svg?style=for-the-badge)
 ![Latest Version](https://img.shields.io/badge/Latest_Version-v1.0.0-27ae60.svg?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-Apache_2.0-e74c3c.svg?style=for-the-badge)</br>
-![Java CI with Gradle](https://github.com/myConsciousness/fluent-regex/workflows/Java%20CI%20with%20Gradle/badge.svg)
-
+![Java CI with Gradle](https://github.com/myConsciousness/epitaph/workflows/Java%20CI%20with%20Gradle/badge.svg)
 
 # Fluent Regex
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [What is it?](#what-is-it)
@@ -18,6 +18,7 @@
 - [More Information](#more-information)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## What is it?
 
 **_More reusable and intuitive regular expressions!_**
@@ -30,18 +31,17 @@ Is there a regular expression that you use a lot but look up on the internet eve
 
 - You can use regular expressions intuitively
 - Commonly used regular expressions are provided as presets
-- Feature quality is high due to the wrapping of ` java.lang.regex.Matcher`
+- Feature quality is high due to the wrapping of `java.lang.regex.Matcher`
 
 > **_Note:_**</br>
 > Of course, for those of you who have mastered regular expressions, this package will be an unnecessary long shot!
-
 
 ## How To Use
 
 ### 1. Add the dependencies
 
-> **_Note:_**<br>
-> Replace version you want to use. Check the latest [Packages](https://github.com/myConsciousness/fluent-regex/packages).<br>
+> **_Note:_**</br>
+> Replace version you want to use. Check the latest [Packages](https://github.com/myConsciousness/epitaph/packages).</br>
 > Please contact me for a token to download the package.
 
 **_Maven_**
@@ -49,7 +49,7 @@ Is there a regular expression that you use a lot but look up on the internet eve
 ```xml
 <dependency>
   <groupId>org.thinkit.common.regex</groupId>
-  <artifactId>fluent-regex</artifactId>
+  <artifactId>epitaph</artifactId>
   <version>v1.0.0</version>
 </dependency>
 
@@ -68,7 +68,7 @@ Is there a regular expression that you use a lot but look up on the internet eve
 repositories {
     maven {
         name = "GitHubPackages"
-        url = uri("https://maven.pkg.github.com/myConsciousness/fluent-regex")
+        url = uri("https://maven.pkg.github.com/myConsciousness/epitaph")
         credentials {
           username = "myConsciousness"
           password = "xxxxxxxxxxxxxxxxxx"
@@ -77,13 +77,13 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.thinkit.common.regex:fluent-regex:v1.0.0'
+    implementation 'org.thinkit.common.regex:epitaph:v1.0.0'
 }
 ```
 
 ## License
 
-```
+```license
 Copyright 2020 Kato Shinya.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -99,14 +99,14 @@ the License.
 
 ## More Information
 
-`Fluent Regex` was designed and implemented by Kato Shinya, who works as a freelance developer.
+`Epitaph` was designed and implemented by Kato Shinya, who works as a freelance developer.
 
 Regardless of the means or content of communication, I would love to hear from you if you have any questions or concerns. I do not check my email box very often so a response may be delayed, anyway thank you for your interest!
 
 - [Creator Profile](https://github.com/myConsciousness)
 - [Creator Website](https://myconsciousness.github.io/)
-- [License](https://github.com/myConsciousness/fluent-regex/blob/master/LICENSE)
-- [Release Note](https://github.com/myConsciousness/fluent-regex/releases)
-- [Package](https://github.com/myConsciousness/fluent-regex/packages)
-- [File a Bug](https://github.com/myConsciousness/fluent-regex/issues)
-- [Reference](https://myconsciousness.github.io/fluent-regex/)
+- [License](https://github.com/myConsciousness/epitaph/blob/master/LICENSE)
+- [Release Note](https://github.com/myConsciousness/epitaph/releases)
+- [Package](https://github.com/myConsciousness/epitaph/packages)
+- [File a Bug](https://github.com/myConsciousness/epitaph/issues)
+- [Reference](https://myconsciousness.github.io/epitaph/)
