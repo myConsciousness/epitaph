@@ -33,7 +33,7 @@ import lombok.NonNull;
  * @author Kato Shinya
  * @since 1.0.0
  */
-public final class FluentRegex {
+public final class Epitaph {
 
     /**
      * The matcher
@@ -43,7 +43,7 @@ public final class FluentRegex {
     /**
      * Default constructor
      */
-    private FluentRegex() {
+    private Epitaph() {
     }
 
     /**
@@ -56,7 +56,7 @@ public final class FluentRegex {
     }
 
     /**
-     * The builder class for {@link FluentRegex} .
+     * The builder class for {@link Epitaph} .
      */
     public static class Builder {
 
@@ -121,27 +121,27 @@ public final class FluentRegex {
         }
 
         /**
-         * Returns the new instance of {@link FluentRegex} .
+         * Returns the new instance of {@link Epitaph} .
          *
-         * @return The new instance of {@link FluentRegex}
+         * @return The new instance of {@link Epitaph}
          *
          * @exception IllegalStateException If {@link #pattern(RegexPattern)} or
          *                                  {@link #input(CharSequence)} is not called
          */
-        public FluentRegex build() {
+        public Epitaph build() {
             Preconditions.requireNonNull(this.regexPattern, new IllegalStateException("The regex pattern is required"));
             Preconditions.requireNonNull(this.input, new IllegalStateException("The input is required"));
 
-            final FluentRegex fluentRegex = new FluentRegex();
+            final Epitaph epitaph = new Epitaph();
 
             if (this.regexOptionSet.isEmpty()) {
-                fluentRegex.matcher = Pattern.compile(this.regexPattern.getTag()).matcher(this.input);
+                epitaph.matcher = Pattern.compile(this.regexPattern.getTag()).matcher(this.input);
             } else {
-                fluentRegex.matcher = Pattern.compile(this.regexPattern.getTag(), this.getRegexOption())
+                epitaph.matcher = Pattern.compile(this.regexPattern.getTag(), this.getRegexOption())
                         .matcher(this.input);
             }
 
-            return fluentRegex;
+            return epitaph;
         }
 
         /**
