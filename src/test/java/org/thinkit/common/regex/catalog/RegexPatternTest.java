@@ -25,8 +25,7 @@ import org.junit.jupiter.api.Test;
  * The test class for the {@link RegexPattern} .
  *
  * @author Kato Shinya
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
  */
 final class RegexPatternTest {
 
@@ -65,7 +64,7 @@ final class RegexPatternTest {
             put(21, "ftp://([a-z0-9]+:[a-z0-9]+@)?([\\.a-z0-9]+)/([\\./a-z0-9]+)");
             put(22, "([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[j|J][a|A][v|V][a|A]");
             put(23, "([一-龯ァ-ンぁ-んa-zA-Z]+-?)+[一-龯ァ-ンぁ-んa-zA-Z0-9]+\\.[t|T][x|X][t|T]");
-            put(24, "([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[j|J][a|A][s|S][o|O][n|N]");
+            put(24, "([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[j|J][s|S][o|O][n|N]");
             put(25, "[一-龯]+");
             put(26, "[ぁ-ん]+");
             put(27, "[あ-ん]+");
@@ -73,8 +72,8 @@ final class RegexPatternTest {
             put(29, "[ァ-ン]+");
             put(30, "[ア-ン]+");
             put(31, "[ァィゥェォヵヶッャュョヮ]+");
-            put(32, "[ぁ-んァ-ン]+");
-            put(33, "[ぁ-んァ-ン0-9]+");
+            put(32, "[ぁ-んァ-ン一-龯]+");
+            put(33, "[ぁ-んァ-ン一-龯0-9]+");
         }
     };
 

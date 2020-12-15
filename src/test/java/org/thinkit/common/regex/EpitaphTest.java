@@ -1085,4 +1085,437 @@ final class EpitaphTest {
             assertFalse(Epitaph.builder().pattern(RegexPattern.TEXT_FILE).input(parameter).build().matches());
         }
     }
+
+    @Nested
+    class TestJsonFilePattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test.json", " test.json", "test test.json", "test test.json ", "test.JSON",
+                " test.JSON", "test test.JSON", "test test.JSON " })
+        void testFind(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.JSON_FILE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test.json", "test.json test", "test.JSON", })
+        void testLookingAt(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.JSON_FILE).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test.json", "test.JSON" })
+        void testMatches(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.JSON_FILE).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", "json", ".json", "JSON", ".JSON", "てすと.json", "テスト.json",
+                "試験.json", "てすとテストtest012試験.json" })
+        void testNotFind(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.JSON_FILE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", "test test.json", "json", ".json", "JSON", ".JSON",
+                "てすと.json", "テスト.json", "試験.json", "てすとテストtest012試験.json" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.JSON_FILE).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", "json", ".json", "JSON", ".JSON", "てすと.json", "テスト.json",
+                "試験.json", "てすとテストtest012試験.json" })
+        void testNotMatch(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.JSON_FILE).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestJapaneseKanjiPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "一", "龯", " 一", " 龯", "一 ", "龯 ", "test 一 ", "一 test" })
+        void testFind(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.JAPANESE_KANJI).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "龯", "龯 test", "龯 ", })
+        void testLookingAt(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.JAPANESE_KANJI).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "龯", "試験" })
+        void testMatches(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.JAPANESE_KANJI).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", " test ", "&#%!$)(", "てすと", "テスト" })
+        void testNotFind(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.JAPANESE_KANJI).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", " test ", "&#%!$)(", "てすと", "テスト", "test 試験" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.JAPANESE_KANJI).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", " test ", "&#%!$)(", "てすと", "テスト" })
+        void testNotMatch(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.JAPANESE_KANJI).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestHiraganaPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "ぁ", "ん", " ぁ", " ん", "ぁ ", "ん ", "ぁ test", " test ん", "test ぁ test",
+                " ん test something" })
+        void testFind(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.HIRAGANA).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "ぁ", "ん", "ぁ ", "ん ", "ぁ test", "ん test something" })
+        void testLookingAt(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.HIRAGANA).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "ぁ", "ん" })
+        void testMatches(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.HIRAGANA).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", " test ", "&#%!$)(", "テスト", "試験" })
+        void testNotFind(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.HIRAGANA).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", " test ", "&#%!$)(", "テスト", "試験", " ぁ", " あ" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.HIRAGANA).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", " test ", "&#%!$)(", "テスト", "試験", " ぁ", " あ" })
+        void testNotMatch(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.HIRAGANA).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestHiraganaUpperCasePattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "あ", "ん", " あ", " ん", "あ ", "ん ", "あ test", " test ん", "test あ test",
+                " ん test something" })
+        void testFind(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.HIRAGANA_UPPER_CASE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "あ", "ん", "あ ", "ん ", "あ test", "ん test something" })
+        void testLookingAt(final String parameter) {
+            assertTrue(
+                    Epitaph.builder().pattern(RegexPattern.HIRAGANA_UPPER_CASE).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "あ", "ん" })
+        void testMatches(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.HIRAGANA_UPPER_CASE).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "ぁ", "", " ", "　", "0000", " test ", "&#%!$)(", "テスト", "試験" })
+        void testNotFind(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.HIRAGANA_UPPER_CASE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "ぁ", "", " ", "　", "0000", " test ", "&#%!$)(", "テスト", "試験", " ぁ", " あ" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(
+                    Epitaph.builder().pattern(RegexPattern.HIRAGANA_UPPER_CASE).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "ぁ", "", " ", "　", "0000", " test ", "&#%!$)(", "テスト", "試験", " ぁ", " あ" })
+        void testNotMatch(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.HIRAGANA_UPPER_CASE).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestHiraganaLowerCasePattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "ぁ", "ぁ test", " test ぁ", "test ぁ test", " ぁ test something" })
+        void testFind(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.HIRAGANA_LOWER_CASE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "ぁ", "ぁ test" })
+        void testLookingAt(final String parameter) {
+            assertTrue(
+                    Epitaph.builder().pattern(RegexPattern.HIRAGANA_LOWER_CASE).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "ぁ" })
+        void testMatches(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.HIRAGANA_LOWER_CASE).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "あ", "", " ", "　", "0000", " test ", "&#%!$)(", "テスト", "試験" })
+        void testNotFind(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.HIRAGANA_LOWER_CASE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "あ", "", " ", "　", "0000", " test ", "&#%!$)(", "テスト", "試験", " ぁ", " あ" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(
+                    Epitaph.builder().pattern(RegexPattern.HIRAGANA_LOWER_CASE).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "あ", "", " ", "　", "0000", " test ", "&#%!$)(", "テスト", "試験", " ぁ", " あ" })
+        void testNotMatch(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.HIRAGANA_LOWER_CASE).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestKatakanaPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "ァ", "ァ test", " test ァ", "test ン test", " ン test something" })
+        void testFind(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.KATAKANA).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "ン", "ァ test" })
+        void testLookingAt(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.KATAKANA).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "ン" })
+        void testMatches(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.KATAKANA).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", " test ", "&#%!$)(", "てすと", "試験" })
+        void testNotFind(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.KATAKANA).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", " test ", "&#%!$)(", "てすと", "試験", " ァ", " ン" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.KATAKANA).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", " test ", "&#%!$)(", "てすと", "試験", " ァ", " ン" })
+
+        void testNotMatch(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.KATAKANA).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestKatakanaUpperCasePattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "ア", "ア test", " test ア", "test ン test", " ン test something" })
+        void testFind(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.KATAKANA_UPPER_CASE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "ン", "ア test" })
+        void testLookingAt(final String parameter) {
+            assertTrue(
+                    Epitaph.builder().pattern(RegexPattern.KATAKANA_UPPER_CASE).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "ン" })
+        void testMatches(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.KATAKANA_UPPER_CASE).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "ァ", "", " ", "　", "0000", " test ", "&#%!$()", "てすと", "試験" })
+
+        void testNotFind(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.KATAKANA_UPPER_CASE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "ァ", "", " ", "　", "0000", " test ", "&#%!$)(", "てすと", "試験", " ァ", " ン" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(
+                    Epitaph.builder().pattern(RegexPattern.KATAKANA_UPPER_CASE).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "ァ", "", " ", "　", "0000", " test ", "&#%!$)(", "てすと", "試験", " ァ", " ン" })
+
+        void testNotMatch(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.KATAKANA_UPPER_CASE).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestKatakanaLowerCasePattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "ァ", "ァ test", " test ァ", "test ァ test", " ァ test something" })
+        void testFind(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.KATAKANA_LOWER_CASE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "ァ", "ァ test" })
+        void testLookingAt(final String parameter) {
+            assertTrue(
+                    Epitaph.builder().pattern(RegexPattern.KATAKANA_LOWER_CASE).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "ァ" })
+        void testMatches(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.KATAKANA_LOWER_CASE).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "ア", "", " ", "　", "0000", " test ", "&#%!$()", "てすと", "試験" })
+
+        void testNotFind(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.KATAKANA_LOWER_CASE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "ア", "", " ", "　", "0000", " test ", "&#%!$)(", "てすと", "試験", " ァ", " ン" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(
+                    Epitaph.builder().pattern(RegexPattern.KATAKANA_LOWER_CASE).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "ア", "", " ", "　", "0000", " test ", "&#%!$)(", "てすと", "試験", " ァ", " ン" })
+
+        void testNotMatch(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.KATAKANA_LOWER_CASE).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestJapaneseAlphabetPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "てすと", "テスト", "試験", " てすと", " テスト", " 試験", "てすと ", "テスト ", "試験 ", "test てすと",
+                "test テスト", "test 試験", "testてすとtest", "testテストtest", "test試験test" })
+        void testFind(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.JAPANESE_ALPHABET).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "てすと", "テスト", "試験", "てすと ", "テスト ", "試験 ", "てすと ", "テスト ", "試験 ", "てすとtest", "テストtest",
+                "試験test" })
+        void testLookingAt(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.JAPANESE_ALPHABET).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "てすと", "テスト", "試験" })
+        void testMatches(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.JAPANESE_ALPHABET).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", " test ", "&#%!$()", "01234" })
+
+        void testNotFind(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.JAPANESE_ALPHABET).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", " test ", "&#%!$()", "01234てすと", " てすと", " テスト", " 試験" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.JAPANESE_ALPHABET).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", " test ", "&#%!$()", "01234てすと", " てすと", " テスト", " 試験" })
+
+        void testNotMatch(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.JAPANESE_ALPHABET).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestJapaneseAlphanumericPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "てすと", "テスト", "試験", " てすと", " テスト", " 試験", "てすと ", "テスト ", "試験 ", "test てすと",
+                "test テスト", "test 試験", "testてすとtest", "testテストtest", "test試験test", "てすと0123", "0123テスト", "試験0123",
+                " てすと0123", "0123 テスト", " 試験0123", "てすと 0123", "テスト 0123", "試験 0123", "0123test てすと", "0123test テスト",
+                "test 試験0123", "test0123てすとtest", "testテスト0123test", "test試験test0123" })
+        void testFind(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.JAPANESE_ALPHANUMERIC).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "てすと", "テスト", "試験", "てすと ", "テスト ", "試験 ", "てすと ", "テスト ", "試験 ", "てすとtest", "テストtest",
+                "試験test", "0123 test テスト" })
+        void testLookingAt(final String parameter) {
+            assertTrue(
+                    Epitaph.builder().pattern(RegexPattern.JAPANESE_ALPHANUMERIC).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "てすと", "テスト", "試験", "0123" })
+        void testMatches(final String parameter) {
+            assertTrue(
+                    Epitaph.builder().pattern(RegexPattern.JAPANESE_ALPHANUMERIC).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", " test ", "&#%!$()" })
+
+        void testNotFind(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.JAPANESE_ALPHANUMERIC).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", " test ", "&#%!$()", " てすと", " テスト", " 試験", " 0123" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(
+                    Epitaph.builder().pattern(RegexPattern.JAPANESE_ALPHANUMERIC).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", " test ", "&#%!$()", " てすと", " テスト", " 試験", " 0123" })
+
+        void testNotMatch(final String parameter) {
+            assertFalse(
+                    Epitaph.builder().pattern(RegexPattern.JAPANESE_ALPHANUMERIC).input(parameter).build().matches());
+        }
+    }
 }

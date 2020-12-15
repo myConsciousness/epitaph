@@ -157,7 +157,7 @@ public enum RegexPattern implements BiCatalog<RegexPattern, String> {
 	/**
 	 * JSON file
 	 */
-	JSON_FILE(24, "([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[j|J][a|A][s|S][o|O][n|N]"),
+	JSON_FILE(24, "([a-zA-Z]+-?)+[a-zA-Z0-9]+\\.[j|J][s|S][o|O][n|N]"),
 
 	/**
 	 * Japanese Kanji
@@ -197,12 +197,12 @@ public enum RegexPattern implements BiCatalog<RegexPattern, String> {
 	/**
 	 * Japanese alphabet
 	 */
-	JAPANESE_ALPHABET(32, "[ぁ-んァ-ン]+"),
+	JAPANESE_ALPHABET(32, "[ぁ-んァ-ン一-龯]+"),
 
 	/**
 	 * Japanese alphanumeric
 	 */
-	JAPANESE_ALPHANUMERIC(33, "[ぁ-んァ-ン0-9]+");
+	JAPANESE_ALPHANUMERIC(33, "[ぁ-んァ-ン一-龯0-9]+");
 
 	/**
 	 * The code
