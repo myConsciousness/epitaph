@@ -22,7 +22,7 @@
  * Epitaph epitaph = Epitaph.builder().pattern(RegexPattern.JAPANESE_ALPHABET).input("test").build();
  * epitaph.find();
  * epitaph.lookigAt();
- * epitaph.match();
+ * epitaph.matches();
  * epitaph.group();
  * </code>
  * </pre>
@@ -33,7 +33,7 @@
  * Epitaph epitaph = Epitaph.builder().pattern("[A-Za-z]+").input("test").build();
  * epitaph.find();
  * epitaph.lookigAt();
- * epitaph.match();
+ * epitaph.matches();
  * epitaph.group();
  * </code>
  * </pre>

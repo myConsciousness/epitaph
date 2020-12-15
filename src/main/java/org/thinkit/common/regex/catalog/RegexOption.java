@@ -105,8 +105,6 @@ public enum RegexOption implements BiCatalog<RegexOption, Integer> {
      *
      * <p>
      * There is no embedded flag character for enabling literal parsing.
-     *
-     * @since 1.5
      */
     LITERAL(4, Pattern.LITERAL),
 
@@ -182,8 +180,6 @@ public enum RegexOption implements BiCatalog<RegexOption, Integer> {
      * <p>
      * Specifying this flag may impose a performance penalty.
      * </p>
-     *
-     * @since 1.7
      */
     UNICODE_CHARACTER_CLASS(8, Pattern.UNICODE_CHARACTER_CLASS);
 
