@@ -28,10 +28,44 @@ import lombok.NonNull;
 import lombok.ToString;
 
 /**
- * Provides functions to manipulate regular expressions in a more intuitive way.
+ * Provides features to manipulate regular expressions in a more intuitive way.
  * <p>
- * If you want to add a regular expression pattern to be used, please maintain
- * {@link RegexPattern} .
+ * There are <i>two ways</i> to specify the regular expression pattern to be
+ * used, either by call {@link Builder#pattern(String)} and directly specifying
+ * an arbitrary pattern as string, or by call
+ * {@link Builder#pattern(RegexPattern)} specifying it from a preset provided by
+ * {@link Epitaph} based on {@link RegexPattern} .
+ * <p>
+ * You can also call {@link Builder#option(EnumSet)} as optional and specify
+ * options set based on {@link RegexOption} to be used when parsing with regular
+ * expressions.
+ * <p>
+ * For regular expression parsing, the {@link #find()} , {@link #lookingAt()}
+ * and {@link #matches()} methods are provided. For strings matched in the
+ * regular expression parsing process, you can use {@link #group()} method to
+ * get the string within the range of the currently matched index.
+ *
+ * <pre>
+ * Specify the regex pattern as preset:
+ * <code>
+ * Epitaph epitaph = Epitaph.builder().pattern(RegexPattern.JAPANESE_ALPHABET).input("test").build();
+ * epitaph.find();
+ * epitaph.lookigAt();
+ * epitaph.match();
+ * epitaph.group();
+ * </code>
+ * </pre>
+ *
+ * <pre>
+ * Specify the specific regex pattern:
+ * <code>
+ * Epitaph epitaph = Epitaph.builder().pattern("[A-Za-z]+").input("test").build();
+ * epitaph.find();
+ * epitaph.lookigAt();
+ * epitaph.match();
+ * epitaph.group();
+ * </code>
+ * </pre>
  *
  * @author Kato Shinya
  * @since 1.0.0
