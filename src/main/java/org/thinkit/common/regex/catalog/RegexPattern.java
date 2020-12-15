@@ -23,8 +23,7 @@ import lombok.RequiredArgsConstructor;
  * The catalog that manages regex patterns.
  *
  * @author Kato Shinya
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
  */
 @RequiredArgsConstructor
 public enum RegexPattern implements BiCatalog<RegexPattern, String> {

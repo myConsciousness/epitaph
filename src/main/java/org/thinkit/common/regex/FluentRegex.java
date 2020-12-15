@@ -18,7 +18,7 @@ import java.util.EnumSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.thinkit.common.Preconditions;
+import org.thinkit.common.base.precondition.Preconditions;
 import org.thinkit.common.regex.catalog.RegexOption;
 import org.thinkit.common.regex.catalog.RegexPattern;
 
@@ -31,8 +31,7 @@ import lombok.NonNull;
  * {@link RegexPattern} .
  *
  * @author Kato Shinya
- * @since 1.0
- * @version 1.0
+ * @since 1.0.0
  */
 public final class FluentRegex {
 
