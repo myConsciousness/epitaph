@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"org.thinkit.common.regex"},{"l":"org.thinkit.common.regex.catalog"}];updateSearchResults();
+packageSearchIndex = [{"l":"org.thinkit.common.regex"},{"l":"org.thinkit.common.regex.catalog"},{"l":"すべてのパッケージ","u":"allpackages-index.html"}];updateSearchResults();
