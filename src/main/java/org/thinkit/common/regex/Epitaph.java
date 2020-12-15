@@ -14,6 +14,7 @@
 
 package org.thinkit.common.regex;
 
+import java.io.Serializable;
 import java.util.EnumSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,7 +23,9 @@ import org.thinkit.common.base.precondition.Preconditions;
 import org.thinkit.common.regex.catalog.RegexOption;
 import org.thinkit.common.regex.catalog.RegexPattern;
 
+import lombok.EqualsAndHashCode;
 import lombok.NonNull;
+import lombok.ToString;
 
 /**
  * Provides functions to manipulate regular expressions in a more intuitive way.
@@ -33,7 +36,14 @@ import lombok.NonNull;
  * @author Kato Shinya
  * @since 1.0.0
  */
-public final class Epitaph {
+@ToString
+@EqualsAndHashCode
+public final class Epitaph implements Serializable {
+
+    /**
+     * The serial version UID
+     */
+    private static final long serialVersionUID = -2248133392969719338L;
 
     /**
      * The matcher
