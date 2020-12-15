@@ -7,6 +7,7 @@
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
 - [What is it?](#what-is-it)
@@ -28,7 +29,7 @@ Is there a regular expression that you use a lot but look up on the internet eve
 
 ## Benefits
 
-- You can use regular expressions intuitively
+- Can use regular expressions intuitively
 - Commonly used regular expressions are provided as presets
 - Feature quality is high due to the wrapping of `java.lang.regex.Matcher`
 
