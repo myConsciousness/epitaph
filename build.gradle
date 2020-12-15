@@ -34,7 +34,7 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/myConsciousness/fluent-regex")
+            url = uri("https://maven.pkg.github.com/myConsciousness/epitaph")
             credentials {
                 username = System.getenv("GITHUB_USER")
                 password = System.getenv("GITHUB_PUBLISH_TOKEN")
@@ -46,7 +46,7 @@ publishing {
 repositories {
     maven {
         name = "GitHubPackages"
-        url = uri("https://maven.pkg.github.com/myConsciousness/fluent-regex")
+        url = uri("https://maven.pkg.github.com/myConsciousness/epitaph")
         credentials {
             username = System.getenv("GITHUB_USER")
             password = System.getenv("GITHUB_DOWNLOAD_PACKAGE_TOKEN")
@@ -66,8 +66,8 @@ dependencies {
     implementation 'org.projectlombok:lombok:1.18.16'
 	annotationProcessor 'org.projectlombok:lombok:1.18.16'
 
-    implementation 'org.thinkit.common:precondition-validator:v1.0.9'
-    implementation 'org.thinkit.api.catalog:catalog-api:v1.0.1'
+    implementation 'org.thinkit.common:precondition-validator:v1.1.0'
+    implementation 'org.thinkit.api.catalog:catalog-api:v1.0.2'
 }
 
 test {
@@ -100,7 +100,7 @@ javadoc {
     dependsOn delombok
 
     source = file( "${buildDir}/${delombok.name}" )
-    title = 'Fluent Regex'
+    title = 'Epitaph'
     options.links('https://docs.oracle.com/en/java/javase/13/docs/api/')
     options.charSet("utf-8")
     options.showFromPublic()
