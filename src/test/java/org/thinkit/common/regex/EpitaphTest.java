@@ -954,4 +954,135 @@ final class EpitaphTest {
             assertFalse(Epitaph.builder().pattern(RegexPattern.ALPHABET_LOWER_CASE).input(parameter).build().matches());
         }
     }
+
+    @Nested
+    class TestFtpUrlPattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "ftp://example.com/pub/file.txt", "testftp://example.com/pub/file.txt",
+                "ftp://example.com/pub/file.txt test", " ftp://example.com/pub/file.txt " })
+        void testFind(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.FTP_URL).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "ftp://example.com/pub/file.txt", "ftp://example.com/pub/file.txt test" })
+        void testLookingAt(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.FTP_URL).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "ftp://example.com/pub/file.txt", "ftp://example.com/pub/" })
+        void testMatches(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.FTP_URL).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", "ftp", "ftp://" })
+        void testNotFind(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.FTP_URL).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", "ftp", "ftp://", "test ftp://example.com/pub/",
+                " ftp://example.com/pub/file.txt " })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.FTP_URL).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", "ftp", "ftp://", "testftp://example.com/pub/file.txt" })
+        void testNotMatch(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.FTP_URL).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestJavaFilePattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test.java", " test.java", "test test.java", "test test.java ", "test.JAVA",
+                " test.JAVA", "test test.JAVA", "test test.JAVA " })
+        void testFind(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.JAVA_FILE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test.java", "test.java test", "test.JAVA", "test.JAVA test", "test.java test" })
+        void testLookingAt(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.JAVA_FILE).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test.java", "test.JAVA" })
+        void testMatches(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.JAVA_FILE).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", "java", ".java", "JAVA", ".JAVA", "てすと.java", "テスト.java",
+                "試験.java" })
+        void testNotFind(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.JAVA_FILE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", "java", ".java", "JAVA", ".JAVA", " test.java",
+                "test test.java", "てすと.java", "テスト.java", "試験.java" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.JAVA_FILE).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", "java", ".java", "JAVA", ".JAVA", " test.java",
+                "test test.java", "test.java test", "てすと.java", "テスト.java", "試験.java" })
+        void testNotMatch(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.JAVA_FILE).input(parameter).build().matches());
+        }
+    }
+
+    @Nested
+    class TestTextFilePattern {
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test.txt", " test.txt", "test test.txt", "test test.txt ", "test.TXT", " test.TXT",
+                "test test.TXT", "test test.TXT ", "てすと.txt", "テスト.txt", "試験.txt", "てすとテスト試験test012.txt" })
+        void testFind(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.TEXT_FILE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test.txt", "test.txt test", "test.TXT", "test.TXT test", "test.txt test", "てすと.txt",
+                "テスト.txt", "試験.txt", "てすとテスト試験test012.txt" })
+        void testLookingAt(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.TEXT_FILE).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test.txt", "test.TXT", "テスト.txt", "試験.txt", "てすとテスト試験test012.txt" })
+        void testMatches(final String parameter) {
+            assertTrue(Epitaph.builder().pattern(RegexPattern.TEXT_FILE).input(parameter).build().matches());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", "txt", ".txt", "TXT", ".TXT" })
+        void testNotFind(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.TEXT_FILE).input(parameter).build().find());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", "txt", ".txt", "TXT", ".TXT", "test test.txt",
+                "test test.TXT", "test テスト.txt", "test 試験.txt", "test てすとテスト試験test012.txt" })
+        void testNotLookingAt(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.TEXT_FILE).input(parameter).build().lookingAt());
+        }
+
+        @ParameterizedTest
+        @ValueSource(strings = { "test", "", " ", "　", "0000", "txt", ".txt", "TXT", ".TXT", "test test.txt",
+                "test test.TXT", "test テスト.txt", "test 試験.txt", "test てすとテスト試験test012.txt", "test.txt text",
+                "test.TXT text", "テスト.txt text", "試験.txt text", "てすとテスト試験test012.txt text" })
+        void testNotMatch(final String parameter) {
+            assertFalse(Epitaph.builder().pattern(RegexPattern.TEXT_FILE).input(parameter).build().matches());
+        }
+    }
 }
